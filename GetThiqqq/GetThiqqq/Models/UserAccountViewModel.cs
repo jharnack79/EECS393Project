@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GetThiqqqBase.Models
+namespace GetThiqqq.Models
 {
     public class UserAccountViewModel
     {

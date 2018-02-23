@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GetThiqqq;
-using GetThiqqqBase.Models;
+using GetThiqqq.Models;
 
-namespace GetThiqqqBase.Controllers
+namespace GetThiqqq.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController 
     {
         public IUserAccount _userAccount;
 
@@ -29,7 +29,7 @@ namespace GetThiqqqBase.Controllers
             {
                 RedirectToAction("CreateAccount");
             }
-
+            _userAccount.CreateAccount(userAccountViewModel);
             return View();
         }
     }

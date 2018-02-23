@@ -1,12 +1,14 @@
-﻿using System;
+﻿using GetThiqqq.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 namespace GetThiqqq
 {
     public interface IUserAccount
     {
-        UserAccount CreateAccount(string userName, string Password, string EmailAddress);
+        UserAccount CreateAccount(UserAccountViewModel userAccountViewModel);
 
         bool IsUsernameTaken(string userName);
 
@@ -23,7 +25,7 @@ namespace GetThiqqq
 
         public string EmailAddress { get; set; }
 
-        public UserAccount CreateAccount(string userName, string password, string emailAddress)
+        public UserAccount CreateAccount(UserAccountViewModel userAccountViewModel)
         {
             //Add information to DB
             //Get User account ID and post that to each page
