@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GetThiqqq;
 using GetThiqqq.Models;
 
 namespace GetThiqqq.Controllers
 {
-    public class AccountController 
+    public class AccountController : Controller
     {
         public IUserAccount _userAccount;
 
