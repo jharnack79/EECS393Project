@@ -5,7 +5,7 @@
     <h2>CreateAccount</h2>
 </div>
 <div id="form-info">
-    <form method="post" action="@Url.Action("Account", "CreateAccount")">
+    <form method="post" action="@Url.Action("CreateAccount", "Account")">
     <p>Enter your information to create your GetThiqq Account!</p>
     <h3>Username</h3>
     <input id="Username" type="text" />
@@ -14,9 +14,20 @@
     <h3>Email Address</h3>
     <input id="Email Address" type="text" />
 
-    <button type="submit">Submit</button> <button type="button">Cancel</button>
+    <button type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
     </form>
 </div>
 <script>
-    
+    $("#cancel").on("click", function () {
+
+    });
+
+    $("#Password").on("blur", function () {
+        //Should confirm password meets requirements
+
+    });
+
+    $("#Password").on("keyup", function () {
+        //Should obscure character to become dot 
+    });
 </script>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using GetThiqqq.Services;
 
 namespace GetThiqqqBase
 {
@@ -22,6 +23,7 @@ namespace GetThiqqqBase
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<IUserAccount, UserAccount>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

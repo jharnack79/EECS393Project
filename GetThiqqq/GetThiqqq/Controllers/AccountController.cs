@@ -22,15 +22,17 @@ namespace GetThiqqq.Controllers
             return View();
         }
 
-        public IActionResult CreateAccount(CreateAccountViewModel createAccountViewModel)
+        public IActionResult SubmitAccount(CreateAccountViewModel createAccountViewModel)
         {
 
             if (_userAccount.IsEmailAddressRegistered(createAccountViewModel.EmailAddress) && _userAccount.IsPasswordSecure(createAccountViewModel.Password))
             {
-                RedirectToAction("CreateAccount");
+                return RedirectToAction("CreateAccount");
             }
-            _userAccount.CreateAccount(createAccountViewModel);
-            return View();
+            if (_userAccount.CreateAccount(createAccountViewModel))
+                return View();
+            else
+                return RedirectToAction("CreateAccount");
         }
     }
 }

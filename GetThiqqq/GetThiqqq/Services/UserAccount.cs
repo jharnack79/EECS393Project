@@ -8,7 +8,7 @@ namespace GetThiqqq.Services
 {
     public interface IUserAccount
     {
-        UserAccount CreateAccount(CreateAccountViewModel userAccountViewModel);
+        bool CreateAccount(CreateAccountViewModel userAccountViewModel);
 
         bool IsUsernameTaken(string userName);
 
