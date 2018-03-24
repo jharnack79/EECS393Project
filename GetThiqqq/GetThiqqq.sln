@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetThiqqq", "GetThiqqq\GetThiqqq.csproj", "{BECE4C64-63E3-453E-B648-8DDD7174F0DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetThiqqqBase", "GetThiqqqBase\GetThiqqqBase.csproj", "{13167BC9-1DC8-4609-B73E-D94FE7F36FA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetThiqqqBase", "GetThiqqqBase\GetThiqqqBase.csproj", "{13167BC9-1DC8-4609-B73E-D94FE7F36FA3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BECE4C64-63E3-453E-B648-8DDD7174F0DE} = {BECE4C64-63E3-453E-B648-8DDD7174F0DE}
 	EndProjectSection

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace GetThiqqq
+namespace GetThiqqq.Services
 {
     public interface IUserAccount
     {
-        UserAccount CreateAccount(UserAccountViewModel userAccountViewModel);
+        UserAccount CreateAccount(CreateAccountViewModel userAccountViewModel);
 
         bool IsUsernameTaken(string userName);
 
@@ -25,12 +25,11 @@ namespace GetThiqqq
 
         public string EmailAddress { get; set; }
 
-        public UserAccount CreateAccount(UserAccountViewModel userAccountViewModel)
+        //Will create account and add info to database, if successful, will redirect to success page
+        //If return false, will throw error message on page and get user to re-enter info
+        public bool CreateAccount(CreateAccountViewModel userAccountViewModel)
         {
-            //Add information to DB
-            //Get User account ID and post that to each page
-            //Send verification email
-            return null;
+            return true;
         }
 
         public bool IsUsernameTaken(string userName)

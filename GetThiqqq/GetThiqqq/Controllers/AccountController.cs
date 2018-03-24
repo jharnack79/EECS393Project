@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GetThiqqq.Models;
+using GetThiqqq.Services;
 
 namespace GetThiqqq.Controllers
 {
@@ -21,14 +22,14 @@ namespace GetThiqqq.Controllers
             return View();
         }
 
-        public IActionResult CreateAccount(UserAccountViewModel userAccountViewModel)
+        public IActionResult CreateAccount(CreateAccountViewModel createAccountViewModel)
         {
 
-            if (_userAccount.IsEmailAddressRegistered(userAccountViewModel.UserEmail) && _userAccount.IsPasswordSecure(userAccountViewModel.UserPassword))
+            if (_userAccount.IsEmailAddressRegistered(createAccountViewModel.EmailAddress) && _userAccount.IsPasswordSecure(createAccountViewModel.Password))
             {
                 RedirectToAction("CreateAccount");
             }
-            _userAccount.CreateAccount(userAccountViewModel);
+            _userAccount.CreateAccount(createAccountViewModel);
             return View();
         }
     }
