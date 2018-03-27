@@ -5,14 +5,14 @@
     <h2>CreateAccount</h2>
 </div>
 <div id="form-info">
-    <form method="post" action="@Url.Action("CreateAccount", "Account")">
+    <form method="post" action="@Url.Action("SubmitAccount", "Account")">
     <p>Enter your information to create your GetThiqq Account!</p>
     <h3>Username</h3>
-    <input id="Username" type="text" />
+    <input id="Username" name="Username" type="text" />
     <h3>Password</h3>
-    <input id="Password" type="text"/>
+    <input id="Password" name="Password" type="text"/>
     <h3>Email Address</h3>
-    <input id="Email Address" type="text" />
+    <input id="Email-address" name="EmailAddress" type="text" />
 
     <button type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
     </form>

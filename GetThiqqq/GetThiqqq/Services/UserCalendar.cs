@@ -9,5 +9,7 @@ namespace GetThiqqq.Services
         public int Id { get; set; }
 
         public int UserAccountId { get; set; }
+
+        public string Month { get; set; }
     }
 }

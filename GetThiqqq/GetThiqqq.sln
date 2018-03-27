@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetThiqqqBase", "GetThiqqqB
 		{BECE4C64-63E3-453E-B648-8DDD7174F0DE} = {BECE4C64-63E3-453E-B648-8DDD7174F0DE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetThiqqUnitTests", "GetThiqqUnitTests\GetThiqqUnitTests.csproj", "{DD440A8A-DA03-4A37-9007-C70C69728FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetThiqqUnitTests", "GetThiqqUnitTests\GetThiqqUnitTests.csproj", "{DD440A8A-DA03-4A37-9007-C70C69728FF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

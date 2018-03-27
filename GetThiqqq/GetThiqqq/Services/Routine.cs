@@ -25,5 +25,10 @@ namespace GetThiqqq.Services
             if (Exercises.Contains(newExercise))
                 Exercises.Remove(newExercise);
         }
+
+        public void UpdateFrequency(int newFrequency)
+        {
+            Frequency = newFrequency;
+        }
     }
 }
