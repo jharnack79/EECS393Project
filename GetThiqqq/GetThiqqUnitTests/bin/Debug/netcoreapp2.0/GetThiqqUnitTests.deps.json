@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "290aa6043bba185e4258ae767b2320f83878b54f"
+    "signature": "08adc179dea937421451bb54fb29492c60108a5a"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,7 +11,8 @@
           "GetThiqqq": "1.0.0",
           "Microsoft.NET.Test.Sdk": "15.6.1",
           "NUnit": "3.10.1",
-          "NUnit3TestAdapter": "3.10.0"
+          "NUnit3TestAdapter": "3.10.0",
+          "OpenCover": "4.6.519"
         },
         "runtime": {
           "GetThiqqUnitTests.dll": {}
@@ -2148,6 +2149,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "OpenCover/4.6.519": {},
       "Remotion.Linq/2.1.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -4792,6 +4794,13 @@
       "sha512": "sha512-hC4QeR/iC8yJcI9eyAfAFWBaDP7lh4CnXqIMLq26CLLGQsLqy44uJwBVmo/0o9aTKVwPm/M1lPYqYcfOJMDqyg==",
       "path": "nunit3testadapter/3.10.0",
       "hashPath": "nunit3testadapter.3.10.0.nupkg.sha512"
+    },
+    "OpenCover/4.6.519": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oReudTijK4ghbd1GNTzl7Su2KzOufj2evTS5PTGAGC5ThfrThcInB/t9w2ISkcEacOsgLQTdG+PO0UUUGZ+zTw==",
+      "path": "opencover/4.6.519",
+      "hashPath": "opencover.4.6.519.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
