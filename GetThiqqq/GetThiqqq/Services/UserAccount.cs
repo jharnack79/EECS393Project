@@ -1,4 +1,5 @@
 ﻿using GetThiqqq.Models;
+using GetThiqqq.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,13 @@ namespace GetThiqqq.Services
 
     public class UserAccount : IUserAccount
     {
+        public IUserAccountRepository _userAccountRepository;
+
+        public UserAccount(IUserAccountRepository userAccountRepository)
+        {
+            _userAccountRepository = userAccountRepository;
+        }
+
         public string Username { get; set; }
 
         public string Password { get; set; }
@@ -29,6 +37,7 @@ namespace GetThiqqq.Services
         //If return false, will throw error message on page and get user to re-enter info
         public bool CreateAccount(CreateAccountViewModel userAccountViewModel)
         {
+            _userAccountRepository.AddNewAccount(userAccountViewModel);
             return true;
         }
 
