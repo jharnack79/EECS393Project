@@ -1,4 +1,4 @@
-﻿using System;
+﻿using GetThiqqq.Services;
 
 namespace GetThiqqq.Models
 {
@@ -11,6 +11,17 @@ namespace GetThiqqq.Models
         public string UserPassword { get; set; }
 
         public string UserEmail { get; set; }
+
+        public string Address { get; set; }
+
+        public UserAccountViewModel(UserAccount userAccount)
+        {
+            Id = userAccount.Id;
+            Username = userAccount.Username;
+            UserPassword = userAccount.Password;
+            UserEmail = userAccount.EmailAddress;
+               
+        }
 
     }
 }

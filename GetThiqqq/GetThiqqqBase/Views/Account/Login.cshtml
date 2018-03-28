@@ -1,8 +1,11 @@
 ﻿
 
 <div>
-    <h3>Username</h3>
-    <input type="text" name="Username" />
-    <h3>Password</h3>
-    <input type="text" name="Password" />
+    <form action="@Url.Action("UserProfile", "Account")">
+        <h3>Username</h3>
+        <input type="text" name="Username" />
+        <h3>Password</h3>
+        <input type="text" name="Password" />
+        <button type="submit">Login</button>
+    </form>
 </div>

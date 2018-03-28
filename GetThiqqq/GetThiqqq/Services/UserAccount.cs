@@ -9,10 +9,6 @@ namespace GetThiqqq.Services
 {
     public interface IUserAccount
     {
-        bool CreateAccount(CreateAccountViewModel userAccountViewModel);
-
-        bool IsUsernameTaken(string userName);
-
         bool IsPasswordSecure(string password);
 
         bool IsEmailAddressRegistered(string emailAddress);
@@ -20,12 +16,7 @@ namespace GetThiqqq.Services
 
     public class UserAccount : IUserAccount
     {
-        public IUserAccountRepository _userAccountRepository;
-
-        public UserAccount(IUserAccountRepository userAccountRepository)
-        {
-            _userAccountRepository = userAccountRepository;
-        }
+        public int Id { get; set; }
 
         public string Username { get; set; }
 
@@ -33,13 +24,7 @@ namespace GetThiqqq.Services
 
         public string EmailAddress { get; set; }
 
-        //Will create account and add info to database, if successful, will redirect to success page
-        //If return false, will throw error message on page and get user to re-enter info
-        public bool CreateAccount(CreateAccountViewModel userAccountViewModel)
-        {
-            _userAccountRepository.AddNewAccount(userAccountViewModel);
-            return true;
-        }
+        public string Address { get; set; }
 
         public bool IsUsernameTaken(string userName)
         {
