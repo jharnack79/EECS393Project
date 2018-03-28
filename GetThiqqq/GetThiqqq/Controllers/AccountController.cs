@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GetThiqqq.Models;
-using GetThiqqq.Services;
 using GetThiqqq.Repository;
 
 namespace GetThiqqq.Controllers

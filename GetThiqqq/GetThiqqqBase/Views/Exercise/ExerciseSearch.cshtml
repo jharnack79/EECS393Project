@@ -1,0 +1,12 @@
+﻿@model GetThiqqq.Models.ExerciseSearchViewModel
+@{
+    ViewData["Title"] = "ExerciseSearch";
+}
+
+<h2>ExerciseSearch</h2>
+<form action="@Url.Action("ExerciseDemonstration", "Exercise")">
+    <input list="exercise-list"type="text" name="ExerciseName" id="exercise-name" />
+    <datalist id="exercise-list"></datalist>
+    <button type="submit">Search!</button>
+</form>
+

@@ -26,6 +26,7 @@ namespace GetThiqqqBase
             services.AddMvc();
             services.AddScoped<IUserAccount, UserAccount>();
             services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+            services.AddScoped<IExerciseRepository, ExerciseRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
