@@ -28,7 +28,9 @@ namespace GetThiqqq.Repository
 
             var reader = cmd.ExecuteReader();
 
-            reader.Read();
+
+            if (!reader.Read())
+                return null;
 
             var exerciseInstructions = (string)reader["Instructions"];
             var exerciseDescription = (string)reader["Description"];
@@ -45,7 +47,7 @@ namespace GetThiqqq.Repository
 
         public List<string> GetAllExercisesByName()
         {
-            return null;
+            return new List<string>();
         }
     }
 }
