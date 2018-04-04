@@ -4,4 +4,9 @@
 }
 
 <h2>CreatePost</h2>
+<form asp-action="@Url.Action("CreatePost", "Forum")">
+    <textarea name="FourmText"></textarea>
+    <button type="submit">Post</button>
+</form>
+
 

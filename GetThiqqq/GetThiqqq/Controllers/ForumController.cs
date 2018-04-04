@@ -11,5 +11,20 @@ namespace GetThiqqq.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateTopic()
+        {
+            return View();
+        }
+
+        public IActionResult ForumHome()
+        {
+            return View();
+        }
+
+        public IActionResult ForumTopic()
+        {
+            return View();
+        }
     }
 }

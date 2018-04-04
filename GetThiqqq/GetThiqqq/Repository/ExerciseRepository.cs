@@ -47,7 +47,20 @@ namespace GetThiqqq.Repository
 
         public List<string> GetAllExercisesByName()
         {
-            return new List<string>();
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select Name from Exercise";
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var listOfExercises = new List<string>();
+            while (reader.Read())
+            {
+                listOfExercises.Add((string)reader["Name"]);
+            }
+            return listOfExercises;
         }
     }
 }
