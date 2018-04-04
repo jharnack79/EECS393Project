@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "CreateTopic";
+}
+
+<h2>CreateTopic</h2>
+<form action="@Url.Action("CreateTopic", "Forum")">
+    <input type="text" name="TopicName" id="topic-name" />
+    <textarea name="TopicText" id="topic-text"></textarea>
+    <button type="submit">Submit</button>
+</form>
