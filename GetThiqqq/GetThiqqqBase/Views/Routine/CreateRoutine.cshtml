@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "CreateRoutine";
+}
+
+<div>
+    <h2>CreateRoutine</h2>
+    <br/>
+    <div id="exercise-form">
+        <label>Select Your Exercise</label>
+        <br/>
+        <input list="exercise-list"type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name"/>
+        <datalist id="exercise-list"></datalist>
+        <br/>
+        <label>Number of Reps</label>
+        <select id="number-of-reps">
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+        </select>
+        <br/>
+        <label>Weight</label>
+        <br/>
+        <input name="Weight" type="number"/>
+        <br/>
+    </div>
+    
+    <button id="next-exercise">Add Another Exercise</button>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+        $(document).ready(function() {
+        fillExercises();
+    });
+
+        $("#next-exercise").on("click",
+            function () {
+                var element = document.getElementById("exercise-name");
+                var datalistElement = document.getElementById("exercise-list");
+                var newDatalistElement = datalistElement.cloneNode();
+                var newElement = element.cloneNode();
+                var dataListOptions = $("#exercise-list option");
+                $.each(dataListOptions,
+                    function(index, exercise) {
+                        newDatalistElement.append(exercise.cloneNode());
+                    });
+
+                $("#exercise-form").append(newElement);
+                $("#exercise-form").append(newDatalistElement);
+        });
+
+    function fillExercises() {
+        var exercises;
+        $.ajax({
+            url: "@Url.Action("GetAllExercises", "Exercise")",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                exercises = data;
+                $.each(exercises,
+                    function (index, exercise) {
+                        $("#exercise-list")
+                            .append($('<option>', { exercise })
+                                .val(exercise)
+                                .text(exercise));
+                    });
+            }
+
+        });
+    }
+</script>
