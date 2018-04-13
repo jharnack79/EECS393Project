@@ -9,25 +9,24 @@ namespace GetThiqqq.Repository
 {
     public interface IExerciseRepository
     {
-        Exercise GetExerciseByName(string ExerciseName);
+        Exercise GetExerciseByName(string exerciseName);
 
         List<string> GetAllExercisesByName();
     }
 
     public class ExerciseRepository : IExerciseRepository
     {
-        public Exercise GetExerciseByName(string ExerciseName)
+        public Exercise GetExerciseByName(string exerciseName)
         {
             var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
-            cmd.CommandText = "Select * from Exercise Where Name = '" + ExerciseName
+            cmd.CommandText = "Select * from Exercise Where Name = '" + exerciseName
                 + "'";
             cmd.Connection = sqlConnection;
 
             var reader = cmd.ExecuteReader();
-
 
             if (!reader.Read())
                 return null;
@@ -37,7 +36,7 @@ namespace GetThiqqq.Repository
 
             var exercise = new Exercise
             {
-                ExerciseName = ExerciseName,
+                ExerciseName = exerciseName,
                 Description = exerciseDescription,
                 Instructions = exerciseInstructions
             };

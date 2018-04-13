@@ -4,8 +4,13 @@
 }
 
 <h2>CreateTopic</h2>
-<form action="@Url.Action("CreateTopic", "Forum")">
-    <input type="text" name="TopicName" id="topic-name" />
+<form action="@Url.Action("SubmitTopic", "Forum")" method="post">
+    <label>Topic Title</label>
+    <input type="text" name="TopicTitle" id="topic-name"/>
+    <label> Topic Text</label>
     <textarea name="TopicText" id="topic-text"></textarea>
+    <label>Tags</label>
+    <input type="text" name="Tag"/>
+    <button>Add Tag</button>
     <button type="submit">Submit</button>
 </form>

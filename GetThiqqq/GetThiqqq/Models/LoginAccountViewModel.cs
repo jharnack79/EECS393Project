@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GetThiqqq.Models
 {
-    public class LoginAccountViewModel
+    public class LoginAccountViewModel : ViewModelBase
     {
         public string Username { get; set; }
 

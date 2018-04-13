@@ -6,17 +6,15 @@ using GetThiqqq.Services;
 
 namespace GetThiqqq.Models
 {
-    public class UserProfileViewModel
+    public class UserProfileViewModel : ViewModelBase
     {
-        public int UserAccountId { get; set; }
-
         public string Address { get; set; }
 
         public UserAccount UserAccount { get; set; }
 
         public UserProfileViewModel(UserAccount userAccount)
         {
-            UserAccountId = userAccount.Id;
+            UserId = userAccount.Id;
             Address = "";
             UserAccount = userAccount;
         }

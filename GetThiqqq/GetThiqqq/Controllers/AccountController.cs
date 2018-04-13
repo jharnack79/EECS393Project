@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using GetThiqqq.Models;
 using GetThiqqq.Repository;
+using GetThiqqq.Services;
 
 namespace GetThiqqq.Controllers
 {
     public class AccountController : Controller
     {
-        public IUserAccountRepository _userAccountRepository;
+        private readonly IUserAccountRepository _userAccountRepository;
 
         public AccountController(IUserAccountRepository userAccountRepository)
         {
@@ -18,12 +20,26 @@ namespace GetThiqqq.Controllers
             return View();
         }
 
-        public IActionResult UserProfile(LoginAccountViewModel loginAccountViewModel)
+        public IActionResult UserProfile(UserAccountViewModel userAccountViewModel)
         {
-            var userAccount = _userAccountRepository.LoginAccount(loginAccountViewModel);
-            var userProfileViewModel = new UserAccountViewModel(userAccount);
+            var loginAccountViewModel = new LoginAccountViewModel
+            {
+                Password = userAccountViewModel.UserPassword,
+                UserId = userAccountViewModel.UserId,
+                Username = userAccountViewModel.Username
+            };
+            var userAccount = loginAccountViewModel.UserId == 0 ? _userAccountRepository.LoginAccount(loginAccountViewModel) : _userAccountRepository.GetUserById((int)TempData["Id"]);
+            var userProfileViewModel = new UserAccountViewModel
+            {
+                UserId = userAccount.Id,
+                UserEmail = userAccount.EmailAddress,
+                UserPassword = userAccount.Password,
+                Username = userAccount.Username,
+                Address = ""
+            };
             return View(userProfileViewModel);
         }
+
 
         public IActionResult CreateAccount()
         {
@@ -32,10 +48,12 @@ namespace GetThiqqq.Controllers
 
         public IActionResult SubmitAccount(CreateAccountViewModel createAccountViewModel)
         {
-            if (false)//add repo methods to confirm user email and username not already in use
+            if (_userAccountRepository.IsUsernameTaken(createAccountViewModel.Username) ||
+                _userAccountRepository.IsEmailTaken(createAccountViewModel.EmailAddress)) 
             {
-                //return RedirectToAction("CreateAccount");
+                return RedirectToAction("CreateAccount");
             }
+
             if (_userAccountRepository.AddNewAccount(createAccountViewModel))
                 return View();
             else

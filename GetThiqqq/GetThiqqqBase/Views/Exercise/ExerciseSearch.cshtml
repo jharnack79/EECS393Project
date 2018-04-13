@@ -1,12 +1,39 @@
 ﻿@model GetThiqqq.Models.ExerciseSearchViewModel
 @{
     ViewData["Title"] = "ExerciseSearch";
+    TempData["Id"] = Model.UserId;
 }
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <h2>ExerciseSearch</h2>
 <form action="@Url.Action("ExerciseDemonstration", "Exercise")">
-    <input list="exercise-list"type="text" name="ExerciseName" id="exercise-name" />
+    <input list="exercise-list"type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name"/>
     <datalist id="exercise-list"></datalist>
     <button type="submit">Search!</button>
 </form>
 
+<script>
+    $(document).ready(function() {
+        fillExercises();
+    });
+
+    function fillExercises() {
+        var exercises;
+        $.ajax({
+            url: "@Url.Action("GetAllExercises", "Exercise")",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                exercises = data;
+                $.each(exercises,
+                    function (index, exercise) {
+                        $("#exercise-list")
+                            .append($('<option>', { exercise })
+                                .val(exercise)
+                                .text(exercise));
+                    });
+            }
+
+        });
+    }
+</script>

@@ -13,22 +13,5 @@ namespace GetThiqqq.Services
         public int Frequency { get; set; }
 
         public List<UserExercise> Exercises { get; set; }
-
-        public void AddExercise(UserExercise newExercise)
-        {
-            if(!Exercises.Contains(newExercise))
-                Exercises.Add(newExercise);
-        }
-
-        public void RemoveExercise(UserExercise newExercise)
-        {
-            if (Exercises.Contains(newExercise))
-                Exercises.Remove(newExercise);
-        }
-
-        public void UpdateFrequency(int newFrequency)
-        {
-            Frequency = newFrequency;
-        }
     }
 }

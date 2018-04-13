@@ -4,10 +4,8 @@ using System.Text;
 
 namespace GetThiqqq.Models
 {
-    public class ExerciseSearchViewModel
+    public class ExerciseSearchViewModel : ViewModelBase
     {
-        public int UserAccountId { get; set; }
-
         public string ExerciseName { get; set; }
     }
 }
