@@ -7,32 +7,34 @@
     <h2>CreateRoutine</h2>
     <br/>
     <div id="exercise-form">
-        <label>Select Your Exercise</label>
-        <br/>
-        <input list="exercise-list"type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name"/>
-        <datalist id="exercise-list"></datalist>
-        <br/>
-        <label>Number of Reps</label>
-        <select id="number-of-reps">
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
-        </select>
-        <br/>
-        <label>Weight</label>
-        <br/>
-        <input name="Weight" type="number"/>
-        <br/>
+        <form method="post" asp-action="CreateRoutine">
+            <label>Select Your Exercise</label>
+            <br/>
+            <input list="exercise-list"type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name"/>
+            <datalist id="exercise-list"></datalist>
+            <br/>
+            <label>Number of Reps</label>
+            <select id="number-of-reps">
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+            </select>
+            <br/>
+            <label>Weight</label>
+            <br/>
+            <input name="Weight" type="number"/>
+            <br/>
+        </form>
     </div>
     
     <button id="next-exercise">Add Another Exercise</button>
