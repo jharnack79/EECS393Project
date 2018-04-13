@@ -1,6 +1,36 @@
 ﻿@model GetThiqqq.Models.CreateAccountViewModel
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+<style>
+    p {
+        position: relative;
+        color: blue;
+        left: 475px;
+        top: 150px;
+    }
+    input {
+        position: relative;
+        left: 475px;
+        top: 150px;
+    }
+    h3 {
+        position: relative;
+        left: 475px;
+        top: 150px;
+        color: blue;
+    }
+    button {
+        position: relative;
+        left: 475px;
+        top: 150px;
+    }
+    #cancel {
+        color: red;
+    }
+    #submit {
+        color: green;
+    }
+</style>
 <div id="heading">
     <h2>CreateAccount</h2>
 </div>
@@ -14,7 +44,7 @@
     <h3>Email Address</h3>
     <input id="Email-address" name="EmailAddress" type="text" />
 
-    <button type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
+    <button id="submit" type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
     Already Have an Account? <a asp-area="" asp-controller="Account" asp-action="Login">Login Here</a>
     </form>
 </div>

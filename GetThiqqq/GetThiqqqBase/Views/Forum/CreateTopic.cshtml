@@ -3,14 +3,41 @@
     ViewData["Title"] = "CreateTopic";
 }
 
+<style>
+    .topic-title {
+       
+        color: blue;
+        text-align: center;
+    }
+    .topic-text{ 
+        height: 150px;
+        width: 200px;
+        color: blue;
+        text-align: center;
+    }
+    .tags {
+       
+        color: blue;
+        text-align: center;
+    }
+    #add-tag {
+        color: blue;
+    }
+    #submit {
+        color: green; 
+    }
+
+</style>
 <h2>CreateTopic</h2>
 <form action="@Url.Action("SubmitTopic", "Forum")" method="post">
-    <label>Topic Title</label>
-    <input type="text" name="TopicTitle" id="topic-name"/>
-    <label> Topic Text</label>
-    <textarea name="TopicText" id="topic-text"></textarea>
-    <label>Tags</label>
-    <input type="text" name="Tag"/>
-    <button>Add Tag</button>
-    <button type="submit">Submit</button>
+    <div class="text">
+    <label class="topic-title">Topic Title</label>
+    <input class="topic-title" type="text" name="TopicTitle" id="topic-name"/>
+    <label class="topic-text"> Topic Text</label>
+    <textarea class="topic-text" name="TopicText" id="topic-text"></textarea>
+    <label class="tags">Tags</label>
+    <input class="tags" type="text" name="Tag"/>
+    </div>
+    <button id="add-tag">Add Tag</button>
+    <button id="submit" type="submit">Submit</button>
 </form>

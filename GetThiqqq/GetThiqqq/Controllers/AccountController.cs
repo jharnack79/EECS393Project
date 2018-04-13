@@ -43,6 +43,7 @@ namespace GetThiqqq.Controllers
 
         public IActionResult CreateAccount()
         {
+            TempData["Id"] = 0;
             return View();
         }
 

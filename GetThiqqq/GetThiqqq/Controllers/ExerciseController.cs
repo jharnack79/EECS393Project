@@ -34,7 +34,7 @@ namespace GetThiqqq.Controllers
             var exerciseDemonstrationViewModel = new ExerciseDemonstratonViewModel
             {
                 Exercise = exercise,
-                UserId = (int)TempData["Id"]
+                UserId = 0
             };
 
             return View(exerciseDemonstrationViewModel);

@@ -23,6 +23,7 @@ namespace GetThiqqq.Controllers
             {
                 UserId = viewModelBase.UserId
             };
+            TempData["Id"] = 0;
             return View(createPostViewModel);
         }
 
@@ -46,6 +47,7 @@ namespace GetThiqqq.Controllers
             {
                 UserId = viewModelBase.UserId
             };
+            
             return View(editPostViewModel);
         }
 
@@ -55,6 +57,7 @@ namespace GetThiqqq.Controllers
             {
                 UserId = viewModelBase.UserId
             };
+            TempData["Id"] = 0;
             return View(createTopicViewModel);
         }
 
