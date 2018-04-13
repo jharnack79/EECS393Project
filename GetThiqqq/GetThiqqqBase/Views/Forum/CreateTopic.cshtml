@@ -5,39 +5,61 @@
 
 <style>
     .topic-title {
-       
-        color: blue;
+        display: block;
+        position: relative;
         text-align: center;
+        margin: auto;
     }
-    .topic-text{ 
-        height: 150px;
-        width: 200px;
-        color: blue;
+    .topic-text {
+        display: block;
+        position: relative;
         text-align: center;
+        margin: auto;
     }
+
     .tags {
-       
-        color: blue;
+        display: block;
+        position: relative;
         text-align: center;
+        margin: auto;
     }
-    #add-tag {
-        color: blue;
+
+    button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color: black;
+        color: white;
+        border: thin;
+        border-color: black;
     }
-    #submit {
-        color: green; 
+
+    input {
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 5px;
     }
 
 </style>
-<h2>CreateTopic</h2>
+<div class="page-header">
+
+</div>
+<h3 style="text-align:center">Create a forum topic!</h3>
 <form action="@Url.Action("SubmitTopic", "Forum")" method="post">
     <div class="text">
     <label class="topic-title">Topic Title</label>
-    <input class="topic-title" type="text" name="TopicTitle" id="topic-name"/>
+    <input type="text" name="TopicTitle" id="topic-name"/>
     <label class="topic-text"> Topic Text</label>
     <textarea class="topic-text" name="TopicText" id="topic-text"></textarea>
     <label class="tags">Tags</label>
-    <input class="tags" type="text" name="Tag"/>
+    <input type="text" name="Tag"/>
     </div>
-    <button id="add-tag">Add Tag</button>
-    <button id="submit" type="submit">Submit</button>
+    <div style="text-align:center; padding:10px">
+        <button id="add-tag">Add Tag</button>
+        <button id="submit" type="submit">Submit</button>
+    </div>
 </form>

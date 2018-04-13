@@ -4,48 +4,77 @@
 <style>
     p {
         position: relative;
-        color: blue;
-        left: 475px;
-        top: 150px;
+        text-align: center;
+        margin: auto;
     }
+
     input {
+        display: block;
         position: relative;
-        left: 475px;
-        top: 150px;
+        margin: auto;
     }
-    h3 {
-        position: relative;
-        left: 475px;
-        top: 150px;
-        color: blue;
-    }
+
     button {
         position: relative;
-        left: 475px;
-        top: 150px;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color:black;
+        color: white;
+        border:thin;
+        border-color:black;         
     }
-    #cancel {
-        color: red;
+
+    .email-address {
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin: 0 auto;
     }
-    #submit {
-        color: green;
+
+    .password {
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .username {
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    #title {
     }
 </style>
+<div class="page-header">
+
+</div>
 <div id="heading">
-    <h2>CreateAccount</h2>
+    <h3 style="text-align:center">Create A New Account</h3>
 </div>
 <div id="form-info">
     <form method="post" action="@Url.Action("SubmitAccount", "Account")">
-    <p>Enter your information to create your GetThiqq Account!</p>
-    <h3>Username</h3>
-    <input id="Username" name="Username" type="text" />
-    <h3>Password</h3>
-    <input id="Password" name="Password" type="text"/>
-    <h3>Email Address</h3>
-    <input id="Email-address" name="EmailAddress" type="text" />
-
-    <button id="submit" type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
-    Already Have an Account? <a asp-area="" asp-controller="Account" asp-action="Login">Login Here</a>
+        <p>Enter your information to create your GetThiqq Account!</p>
+        <h3 class="username">Username</h3>
+        <input id="Username" name="Username" type="text" />
+        <h3 class="password">Password</h3>
+        <input id="Password" name="Password" type="text" />
+        <h3 class="email-address">Email Address</h3>
+        <input id="Email-address" name="EmailAddress" type="text"  />
+        <div style="text-align: center; padding:10px;">
+            <button id="submit" type="submit">Submit</button> <button id="cancel" type="button">Cancel</button>
+        </div>
+        <div style="text-align:center">
+            Already Have an Account? <a asp-area="" asp-controller="Account" asp-action="Login">Login Here</a>
+        </div>
     </form>
 </div>
 <script>
@@ -59,6 +88,6 @@
     });
 
     $("#Password").on("keyup", function () {
-        //Should obscure character to become dot 
+        //Should obscure character to become dot
     });
 </script>

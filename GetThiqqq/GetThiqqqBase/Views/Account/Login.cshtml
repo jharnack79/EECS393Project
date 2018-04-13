@@ -2,12 +2,54 @@
     TempData["Id"] = 0;
 }
 
+<style>
+    .username {
+        display: block;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        padding:10px;
+    }
+    .password {
+        display: block;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        padding:10px;
+    }
+
+    button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color: black;
+        color: white;
+        border: thin;
+        border-color: black;
+    }
+
+    input {
+        display: block;
+        position: relative;
+        margin: auto;
+    }
+
+</style>
+<div class="page-header">
+
+</div>
+<h1 style="text-align: center">Login</h1>
 <div>
     <form action="@Url.Action("UserProfile", "Account")">
-        <h3>Username</h3>
+        <h3 class="username">Username</h3>
         <input type="text" name="Username" />
-        <h3>Password</h3>
+        <h3 class="password">Password</h3>
         <input type="text" name="UserPassword" />
-        <button type="submit">Login</button>
+        <div style="text-align:center; padding:10px">
+            <button id="submit" type="submit">Login</button>
+        </div>
     </form>
 </div>
