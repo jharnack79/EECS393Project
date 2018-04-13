@@ -1,0 +1,19 @@
+﻿@model ForumTopicViewModel
+@{
+    ViewData["Title"] = "ForumTopic";
+}
+
+<h2>ForumTopic</h2>
+<h3>@Model.ForumTopic.TopicTitle</h3>
+<p>@Model.ForumTopic.TopicText</p>
+
+<table>
+    @foreach (var post in Model.ForumTopic.TopicPosts)
+    {
+        <tr>
+            <text>@post.PostText</text>
+        </tr>
+    }
+</table>
+
+

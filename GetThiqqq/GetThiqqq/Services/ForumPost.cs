@@ -8,13 +8,12 @@ namespace GetThiqqq.Services
     {
         public int Id { get; set; }
 
+        public int TopicId { get; set; }
+
         public int UserId { get; set; }
 
         public string PostText { get; set; }
 
-        public void EditText(string newText)
-        {
-            PostText = newText;
-        }
+        public List<Tag> Tags { get; set; }
     }
 }

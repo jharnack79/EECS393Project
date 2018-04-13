@@ -2,9 +2,8 @@
 
 namespace GetThiqqq.Models
 {
-    public class UserAccountViewModel
+    public class UserAccountViewModel : ViewModelBase
     {
-        public int Id { get; set; }
 
         public string Username { get; set; }
 
@@ -13,15 +12,6 @@ namespace GetThiqqq.Models
         public string UserEmail { get; set; }
 
         public string Address { get; set; }
-
-        public UserAccountViewModel(UserAccount userAccount)
-        {
-            Id = userAccount.Id;
-            Username = userAccount.Username;
-            UserPassword = userAccount.Password;
-            UserEmail = userAccount.EmailAddress;
-               
-        }
 
     }
 }

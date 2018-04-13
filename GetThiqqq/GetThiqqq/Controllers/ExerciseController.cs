@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GetThiqqq.Models;
 using GetThiqqq.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace GetThiqqq.Controllers
 {
     public class ExerciseController : Controller
     {
-        public IExerciseRepository _exerciseRepository;
+        private readonly IExerciseRepository _exerciseRepository;
 
         public ExerciseController(IExerciseRepository exerciseRepository)
         {
@@ -18,20 +16,35 @@ namespace GetThiqqq.Controllers
 
         public IActionResult ExerciseSearch()
         {
-            return View();
+            var exerciseSearchViewModel = new ExerciseSearchViewModel
+            {
+                UserId = 0
+            };
+            return View(exerciseSearchViewModel);
         }
 
         public IActionResult ExerciseDemonstration(ExerciseSearchViewModel exerciseSearchViewModel)
         {
             var exercise = _exerciseRepository.GetExerciseByName(exerciseSearchViewModel.ExerciseName);
 
+            if (exercise == null)
+            {
+                return RedirectToAction("ExerciseSearch");
+            }
             var exerciseDemonstrationViewModel = new ExerciseDemonstratonViewModel
             {
                 Exercise = exercise,
-                UserAccountId = exerciseSearchViewModel.UserAccountId
+                UserId = (int)TempData["Id"]
             };
 
             return View(exerciseDemonstrationViewModel);
+        }
+
+        [HttpGet]
+        public JsonResult GetAllExercises()
+        {
+            var exercises = _exerciseRepository.GetAllExercisesByName();
+            return new JsonResult(exercises);
         }
     }
 }

@@ -1,11 +1,13 @@
-﻿
+﻿@{
+    TempData["Id"] = 0;
+}
 
 <div>
     <form action="@Url.Action("UserProfile", "Account")">
         <h3>Username</h3>
         <input type="text" name="Username" />
         <h3>Password</h3>
-        <input type="text" name="Password" />
+        <input type="text" name="UserPassword" />
         <button type="submit">Login</button>
     </form>
 </div>

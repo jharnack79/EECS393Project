@@ -9,33 +9,34 @@ namespace GetThiqqq.Repository
 {
     public interface IExerciseRepository
     {
-        Exercise GetExerciseByName(string ExerciseName);
+        Exercise GetExerciseByName(string exerciseName);
 
         List<string> GetAllExercisesByName();
     }
 
     public class ExerciseRepository : IExerciseRepository
     {
-        public Exercise GetExerciseByName(string ExerciseName)
+        public Exercise GetExerciseByName(string exerciseName)
         {
             var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
-            cmd.CommandText = "Select * from Exercise Where Name = '" + ExerciseName
+            cmd.CommandText = "Select * from Exercise Where Name = '" + exerciseName
                 + "'";
             cmd.Connection = sqlConnection;
 
             var reader = cmd.ExecuteReader();
 
-            reader.Read();
+            if (!reader.Read())
+                return null;
 
             var exerciseInstructions = (string)reader["Instructions"];
             var exerciseDescription = (string)reader["Description"];
 
             var exercise = new Exercise
             {
-                ExerciseName = ExerciseName,
+                ExerciseName = exerciseName,
                 Description = exerciseDescription,
                 Instructions = exerciseInstructions
             };
@@ -45,7 +46,20 @@ namespace GetThiqqq.Repository
 
         public List<string> GetAllExercisesByName()
         {
-            return null;
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select Name from Exercise";
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var listOfExercises = new List<string>();
+            while (reader.Read())
+            {
+                listOfExercises.Add((string)reader["Name"]);
+            }
+            return listOfExercises;
         }
     }
 }

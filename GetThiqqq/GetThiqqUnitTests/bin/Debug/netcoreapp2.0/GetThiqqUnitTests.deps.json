@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "08adc179dea937421451bb54fb29492c60108a5a"
+    "signature": "1a8faa8ec0b797fde56eb7be826ce82e5828b510"
   },
   "compilationOptions": {},
   "targets": {
@@ -12,7 +12,8 @@
           "Microsoft.NET.Test.Sdk": "15.6.1",
           "NUnit": "3.10.1",
           "NUnit3TestAdapter": "3.10.0",
-          "OpenCover": "4.6.519"
+          "OpenCover": "4.6.519",
+          "ReportGenerator": "3.1.2"
         },
         "runtime": {
           "GetThiqqUnitTests.dll": {}
@@ -1347,7 +1348,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "2.0.0",
-          "System.Data.SqlClient": "4.4.0"
+          "System.Data.SqlClient": "4.4.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
@@ -1390,7 +1391,7 @@
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "2.0.0",
           "Microsoft.Extensions.Options": "2.0.0",
-          "System.Data.SqlClient": "4.4.0"
+          "System.Data.SqlClient": "4.4.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll": {}
@@ -2168,6 +2169,7 @@
           "lib/netstandard1.0/Remotion.Linq.dll": {}
         }
       },
+      "ReportGenerator/3.1.2": {},
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "runtimeTargets": {
           "runtime/debian.8-x64/native/_._": {
@@ -2509,7 +2511,7 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
-      "System.Data.SqlClient/4.4.0": {
+      "System.Data.SqlClient/4.4.3": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.4.0",
           "System.Security.Principal.Windows": "4.4.0",
@@ -3584,7 +3586,10 @@
       "GetThiqqq/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.1",
-          "Microsoft.AspNetCore.All": "2.0.0"
+          "Microsoft.AspNetCore.All": "2.0.0",
+          "OpenCover": "4.6.519",
+          "ReportGenerator": "3.1.2",
+          "System.Data.SqlClient": "4.4.3"
         },
         "runtime": {
           "GetThiqqq.dll": {}
@@ -4809,6 +4814,13 @@
       "path": "remotion.linq/2.1.1",
       "hashPath": "remotion.linq.2.1.1.nupkg.sha512"
     },
+    "ReportGenerator/3.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KHm2RNSAs14QOr9SK2uhHFi3BuUDo1QAwDASj/So6aLZmoLEf4Wtkr1jQoJFn0ihW9Dw9/VdHdGYrw+KKvcxmQ==",
+      "path": "reportgenerator/3.1.2",
+      "hashPath": "reportgenerator.3.1.2.nupkg.sha512"
+    },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -5096,12 +5108,12 @@
       "path": "system.console/4.3.0",
       "hashPath": "system.console.4.3.0.nupkg.sha512"
     },
-    "System.Data.SqlClient/4.4.0": {
+    "System.Data.SqlClient/4.4.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fxb9ghn1k1Ua7FFdlvtiBOD4/PsQvD/fk2KnhS+FK7VC6OggEx6P+lP1P0+KMb5V2dqS1+FbR7HCenoqzJMNIA==",
-      "path": "system.data.sqlclient/4.4.0",
-      "hashPath": "system.data.sqlclient.4.4.0.nupkg.sha512"
+      "sha512": "sha512-D1hEOS1oPLJ6WcGCzpTWe8SauWVxnDoDTUWhv5XCNdRm/QeSUk4BQ3ZDe7BH+zNVHDBkPYjVzpVjnCl43eOSGg==",
+      "path": "system.data.sqlclient/4.4.3",
+      "hashPath": "system.data.sqlclient.4.4.3.nupkg.sha512"
     },
     "System.Diagnostics.Contracts/4.3.0": {
       "type": "package",

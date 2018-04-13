@@ -1,12 +1,19 @@
 ﻿@model GetThiqqq.Models.UserAccountViewModel
 @{
     ViewData["Title"] = Model.Username;
+    TempData["Id"] = Model.UserId;
 }
 
 <h2>UserProfile</h2>
 
 <h3>Hello, @Model.Username!</h3>
+@Html.HiddenFor(x => x.UserId)
 
+<h5>Email Address: @Model.UserEmail</h5>
 
-<h5>Address: @Model.Address</h5>
+<a href="@Url.Action("ExerciseSearch", "Exercise")">Search for an Exercise!</a>
+<a href="@Url.Action("CreateTopic", "Forum")">Create a new Topic Post!</a>
+<a href="@Url.Action("CreateRoutine", "Routine")">Create a new Routine!</a>
+
+<h4>Your Fourm Posts</h4>
 

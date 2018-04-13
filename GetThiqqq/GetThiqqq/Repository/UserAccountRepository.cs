@@ -14,6 +14,8 @@ namespace GetThiqqq.Repository
         bool IsUsernameTaken(string userName);
 
         bool IsEmailTaken(string emailAddress);
+
+        UserAccount GetUserById(int id);
     }
 
     public class UserAccountRepository : IUserAccountRepository
@@ -30,7 +32,8 @@ namespace GetThiqqq.Repository
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            reader.Read();
+            if (!reader.Read())
+                return null;
 
             var userID = (int)reader["ID"];
             var emailAddress = (string)reader["EmailAddress"];
@@ -72,8 +75,15 @@ namespace GetThiqqq.Repository
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
+            cmd.CommandText = "Select * from UserAccounts Where Username = '"
+                              + username + "'";
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var usernameFound = reader.Read();
+
             sqlConnection.Close();
-            return false;
+            return usernameFound;
         }
 
         public bool IsEmailTaken(string emailAddress)
@@ -82,8 +92,43 @@ namespace GetThiqqq.Repository
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
+            cmd.CommandText = "Select * from UserAccounts Where EmailAddress = '"
+                              + emailAddress + "'";
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var emailFound = reader.Read();
+
             sqlConnection.Close();
-            return false;
+            return emailFound;
+        }
+
+        public UserAccount GetUserById(int id)
+        {
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select * from UserAccounts where ID = " + id;
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                return null;
+            }
+
+            var userAccount = new UserAccount()
+            {
+                Address = "",
+                EmailAddress = (string) reader["EmailAddress"],
+                Id = id,
+                Password = (string) reader["Password"],
+                Username = (string) reader["Username"]
+            };
+            sqlConnection.Close();
+            return userAccount;
         }
     }
 }

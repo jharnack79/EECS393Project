@@ -5,10 +5,8 @@ using GetThiqqq.Services;
 
 namespace GetThiqqq.Models
 {
-    public class ExerciseDemonstratonViewModel
+    public class ExerciseDemonstratonViewModel : ViewModelBase
     {
-        public int UserAccountId { get; set; }
-
         public Exercise Exercise { get; set; }
 
     }
