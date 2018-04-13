@@ -8,5 +8,15 @@ namespace GetThiqqq.Models
     public class CreateRoutineViewModel : ViewModelBase
     {
         public int Id { get; set; }
+
+        public List<string> Exercises { get; set; }
+
+        public List<int> NumOfSets { get; set; }
+
+        public List<int> NumOfReps { get; set; }
+
+        public List<int> ExerciseWeight { get; set; }
+
+
     }
 }
