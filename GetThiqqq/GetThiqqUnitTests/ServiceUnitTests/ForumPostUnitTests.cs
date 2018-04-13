@@ -15,5 +15,11 @@ namespace GetThiqqUnitTests.ServiceUnitTests
         {
 
         }
+
+        [Test]
+        public void Should_not_create_forum_post()
+        {
+
+        }
     }
 }
