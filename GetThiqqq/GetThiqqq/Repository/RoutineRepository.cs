@@ -97,13 +97,58 @@ namespace GetThiqqq.Repository
                     UserId = userId
                 });
             }
+
+            var routine = new Routine
+            {
+                Exercises = listOfExercises,
+                Frequency = 3,
+                UserAccountId = userId,
+                Id = routineId
+            };
             sqlConnection.Close();
-            return null;
+            return routine; 
         }
 
         public List<Routine> GetAllRoutinesByUserId(int userId)
         {
-            return null;
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select * from RoutineExercises Where UserId = " +
+                              userId + " Order By RoutineExercises.RoutineId";
+            cmd.Connection = sqlConnection;
+            var reader = cmd.ExecuteReader();
+            var listOfExercises = new List<UserExercise>();
+            var routines = new List<Routine>();
+            var currentRoutineId = 0;
+            var currentRoutine = new Routine();
+            while (reader.Read())
+            {
+                if (currentRoutineId != (int) reader["RoutineId"])
+                {
+                    currentRoutine.Exercises = new List<UserExercise>(listOfExercises);
+                    listOfExercises = new List<UserExercise>();
+                    currentRoutineId = (int) reader["RoutineId"];
+                    currentRoutine = new Routine
+                    {
+                        Id = currentRoutineId,
+                        UserAccountId = userId
+                    };
+                    routines.Add(currentRoutine);
+                }
+                listOfExercises.Add(new UserExercise
+                {
+                    ExerciseName = _exerciseRepository.GetExerciseById((int)reader["ExerciseId"]).ExerciseName,
+                    Reps = (int)reader["NumOfReps"],
+                    Sets = (int)reader["NumOfReps"],
+                    Weight = (int)reader["ExerciseWeight"],
+                    UserId = userId
+                });
+            }
+
+            currentRoutine.Exercises = new List<UserExercise>(listOfExercises);
+            return routines;
         }
     }
 }

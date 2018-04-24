@@ -5,16 +5,29 @@
 <div class="page-header"></div>
 <div>
     <h2>ViewAllRoutines</h2>
-    <table>
+    <table style="width:100%">
         <tr>
             <th>View Routine</th>
+            <th>Routine Id</th>
             <th>Exercise</th>
             <th>Number of Reps</th>
             <th>Number of Sets</th>
+            <th>Weight (lbs)</th>
         </tr>
         @foreach (var routine in Model.Routines)
         {
-            <tr><td><a href="@Url.Action("ViewRoutine", "Routine", routine.Id)">View</a></td></tr>
+            
+            foreach (var exercise in routine.Exercises)
+            {
+                <tr>
+                    <td><a href="@Url.Action("ViewRoutine", "Routine", routine.Id)">View Routine</a></td>
+                    <td>@routine.Id</td>
+                    <td>@exercise.ExerciseName</td>
+                    <td>@exercise.Reps</td>
+                    <td>@exercise.Sets</td>
+                    <td>@exercise.Weight</td>
+                </tr>
+            }
 
         }
     </table>

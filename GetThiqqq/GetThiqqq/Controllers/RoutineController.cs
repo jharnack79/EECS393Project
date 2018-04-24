@@ -47,7 +47,7 @@ namespace GetThiqqq.Controllers
             var routineViewModel = new ViewAllRoutinesViewModel
             {
                 UserId = userId,
-                Routines = _routineRepository.GetAllRoutinesByUserId(userId)
+                Routines = _routineRepository.GetAllRoutinesByUserId(userId) //Need to finish Implementing
             };
             return View(routineViewModel);
         }
