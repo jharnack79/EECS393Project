@@ -33,7 +33,7 @@ namespace GetThiqqq.Repository
 
             var exerciseInstructions = (string)reader["Instructions"];
             var exerciseDescription = (string)reader["Description"];
-
+            var exerciseVideoLink = GetExerciseVideo(exerciseName)
             var exercise = new Exercise
             {
                 ExerciseName = exerciseName,
@@ -42,6 +42,41 @@ namespace GetThiqqq.Repository
             };
 
             return exercise;
+        }
+
+        public string GetExerciseVideo(string exerciseName)
+        {
+            string value = exerciseName;
+            string link = "";
+
+            switch(value)
+            {
+                case "Bench Press":
+                    link = ExerciseConstants.BenchPress;
+                case "Squat":
+                    link = ExerciseConstants.Squat;
+                case "Deadlift";
+                    link = ExerciseConstants.Deadlift;
+                case "Front Squat";
+                    link = ExerciseConstants.FrontSquat;
+                case "Lunges";
+                    link = ExerciseConstants.Lunges;
+                case "Dumbbell Press";
+                    link = ExerciseConstants.DumbbellPress;
+                case "Hyperextensions";
+                    link = ExerciseConstants.Hyperextensions;
+                case "Calf Raises";
+                    link = ExerciseConstants.CalfRaises;
+                case "Front Squat";
+                    link = ExerciseConstants.FrontSquat;
+                case "Hamstring Curls";
+                    link = ExerciseConstants.HamstringCurls;
+                case "Chest Flyes";
+                    link = ExerciseConstants.ChestFlyes;
+
+            }
+            return link;
+
         }
 
         public List<string> GetAllExercisesByName()
