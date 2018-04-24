@@ -89,7 +89,6 @@ namespace GetThiqqq.Repository
                 default:
                     link = "";
                     break;
-
             }
             return link;
 
