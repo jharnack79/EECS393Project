@@ -55,26 +55,37 @@ namespace GetThiqqq.Repository
             {
                 case "Bench Press":
                     link = ExerciseConstants.BenchPress;
+                    break;
                 case "Squat":
                     link = ExerciseConstants.Squat;
-                case "Deadlift";
+                    break;
+                case "Deadlift":
                     link = ExerciseConstants.Deadlift;
-                case "Front Squat";
+                    break;
+                case "Front Squat":
                     link = ExerciseConstants.FrontSquat;
-                case "Lunges";
+                    break;
+                case "Lunges":
                     link = ExerciseConstants.Lunges;
-                case "Dumbbell Press";
+                    break;
+                case "Dumbbell Press":
                     link = ExerciseConstants.DumbbellPress;
-                case "Hyperextensions";
+                    break;
+                case "Hyperextensions":
                     link = ExerciseConstants.Hyperextensions;
-                case "Calf Raises";
+                    break;
+                case "Calf Raises":
                     link = ExerciseConstants.CalfRaises;
-                case "Front Squat";
-                    link = ExerciseConstants.FrontSquat;
-                case "Hamstring Curls";
+                    break;
+                case "Hamstring Curls":
                     link = ExerciseConstants.HamstringCurls;
-                case "Chest Flyes";
+                    break;
+                case "Chest Flyes":
                     link = ExerciseConstants.ChestFlyes;
+                    break;
+                default:
+                    link = "";
+                    break;
 
             }
             return link;

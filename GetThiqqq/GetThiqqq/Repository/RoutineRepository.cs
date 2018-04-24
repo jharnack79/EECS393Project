@@ -52,6 +52,7 @@ namespace GetThiqqq.Repository
                     listOfExercises.Add(new UserExercise
                     {
                         ExerciseName = createRoutineViewModel.Exercises[i],
+                        Weight = createRoutineViewModel.ExerciseWeight[i],
                         Reps = createRoutineViewModel.NumOfReps[i],
                         Sets = createRoutineViewModel.NumOfSets[i],
                         UserId = createRoutineViewModel.UserId
