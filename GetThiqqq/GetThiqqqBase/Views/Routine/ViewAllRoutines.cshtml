@@ -16,7 +16,6 @@
         </tr>
         @foreach (var routine in Model.Routines)
         {
-            
             foreach (var exercise in routine.Exercises)
             {
                 <tr>
@@ -28,7 +27,6 @@
                     <td>@exercise.Weight</td>
                 </tr>
             }
-
         }
     </table>
 </div>

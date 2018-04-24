@@ -2,18 +2,37 @@
 @{
     ViewData["Title"] = "ForumTopic";
 }
+<style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+    th, td {
+    padding: 15px;
+    text-align: left;
+}
+</style>
+<div class="page-header">
 
-<h2>ForumTopic</h2>
-<h3>@Model.ForumTopic.TopicTitle</h3>
-<p>@Model.ForumTopic.TopicText</p>
-
-<table>
-    @foreach (var post in Model.ForumTopic.TopicPosts)
-    {
+</div>
+<div>
+    <a href="@Url.Action("CreatePost", "Forum")">Reply</a>
+    <table style="width: 100%;">
         <tr>
-            <text>@post.PostText</text>
+            <th>Username</th>
+            <th>@Model.ForumTopic.TopicTitle</th>
         </tr>
-    }
-</table>
-
+        <tr>
+            <td>@Model.UserAccount.Username</td>
+            <td>@Model.ForumTopic.TopicText</td>
+        </tr>
+        @foreach (var post in Model.ForumTopic.TopicPosts)
+        {
+            <tr>
+                <td>@post.UserId</td>
+                <td>@post.PostText</td>
+            </tr>
+        }
+    </table>
+</div>
 

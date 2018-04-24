@@ -59,19 +59,18 @@ namespace GetThiqqq.Controllers
 
         public IActionResult CreateTopic()
         {
-            if (Request.Cookies["userAccountId"] != null)
+            if (Request.Cookies["userAccountId"] == null)
+                return RedirectToAction("ForumHome");
+            var createTopicViewModel = new CreateTopicViewModel
             {
-                var createTopicViewModel = new CreateTopicViewModel
-                {
-                    UserId = int.Parse(Request.Cookies["userAccountId"])
-                };
+                UserId = int.Parse(Request.Cookies["userAccountId"])
+            };
             return View(createTopicViewModel);
-            }
-          return RedirectToAction("ForumHome");
         }
 
         public IActionResult SubmitTopic(CreateTopicViewModel createTopicViewModel)
         {
+            createTopicViewModel.UserId = int.Parse(Request.Cookies["userAccountId"]);
             var newTopic = _forumTopicRepository.CreateNewForumTopic(createTopicViewModel);
             if (newTopic == null)
             {
@@ -87,13 +86,17 @@ namespace GetThiqqq.Controllers
             return RedirectToAction("ForumTopic", forumTopicViewModel);
         }
 
-        public IActionResult ForumHome(ViewModelBase viewModelBase)
+        public IActionResult ForumHome()
         { 
             return View();
         }
 
         public IActionResult ForumTopic(ForumTopicViewModel forumTopicViewModel)
         {
+            var userAccount = _userAccountRepository.GetUserById(int.Parse(Request.Cookies["userAccountId"]));
+            var fourmTopic = _forumTopicRepository.GetForumTopicById(1);
+            forumTopicViewModel.UserAccount = userAccount;
+            forumTopicViewModel.ForumTopic = fourmTopic;
             return View(forumTopicViewModel);
         }
     }
