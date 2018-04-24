@@ -1,0 +1,22 @@
+﻿@model ViewAllRoutinesViewModel
+@{
+    ViewData["Title"] = "ViewAllRoutines";
+}
+<div class="page-header"></div>
+<div>
+    <h2>ViewAllRoutines</h2>
+    <table>
+        <tr>
+            <th>View Routine</th>
+            <th>Exercise</th>
+            <th>Number of Reps</th>
+            <th>Number of Sets</th>
+        </tr>
+        @foreach (var routine in Model.Routines)
+        {
+            <tr><td><a href="@Url.Action("ViewRoutine", "Routine", routine.Id)">View</a></td></tr>
+
+        }
+    </table>
+</div>
+

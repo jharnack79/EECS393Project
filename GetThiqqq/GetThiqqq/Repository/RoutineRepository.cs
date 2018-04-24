@@ -14,6 +14,8 @@ namespace GetThiqqq.Repository
         Routine CreateRoutine(CreateRoutineViewModel createRoutineViewModel);
 
         Routine GetRoutineById(int userId, int routineId);
+
+        List<Routine> GetAllRoutinesByUserId(int userId);
     }
     public class RoutineRepository : IRoutineRepository
     {
@@ -65,8 +67,11 @@ namespace GetThiqqq.Repository
             {
                 Exercises = listOfExercises,
                 UserAccountId = createRoutineViewModel.UserId,
-                Id = newId
+                Id = newId,
+                Frequency = createRoutineViewModel.Frequency
             };
+
+            sqlConnection.Close();
             return routineCreated;
     }
 
@@ -76,9 +81,28 @@ namespace GetThiqqq.Repository
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
-            cmd.CommandText = "Select Max(RoutineId) from RoutineExercises";
+            cmd.CommandText = "Select * from RoutineExercises Where UserId =" +
+                              userId + " And RoutineId =" + routineId;
             cmd.Connection = sqlConnection;
+            var reader = cmd.ExecuteReader();
+            var listOfExercises = new List<UserExercise>();
+            while (reader.Read())
+            {
+                listOfExercises.Add(new UserExercise
+                {
+                    ExerciseName = _exerciseRepository.GetExerciseById((int)reader["ExerciseId"]).ExerciseName,
+                    Reps = (int)reader["NumOfReps"],
+                    Sets = (int)reader["NumOfReps"],
+                    Weight = (int)reader["ExerciseWeight"],
+                    UserId = userId
+                });
+            }
+            sqlConnection.Close();
+            return null;
+        }
 
+        public List<Routine> GetAllRoutinesByUserId(int userId)
+        {
             return null;
         }
     }

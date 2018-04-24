@@ -3,12 +3,22 @@
     ViewData["Title"] = "CreateRoutine";
 }
 
+<div class="page-header">
+
+</div>
 <div>
     <h2>CreateRoutine</h2>
     <br/>
     
     <form method="post" asp-action="CreateRoutine">
         <div id="exercise-form">
+            <label>Days a week to preform the Routine</label>
+            <select id="frequency" name="Frequency">
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
             <label>Select Your Exercise</label>
             <br/>
             <input list="exercise-list"type="text" name="Exercises" data-list-element="exercise-list" id="exercise-name"/>

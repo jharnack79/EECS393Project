@@ -5,8 +5,8 @@ using GetThiqqq.Services;
 
 namespace GetThiqqq.Models
 {
-    public class ViewRoutineViewModel : ViewModelBase
+    public class ViewAllRoutinesViewModel : ViewModelBase
     {
-        public Routine Routine { get; set; } 
+        public List<Routine> Routines { get; set; }
     }
 }

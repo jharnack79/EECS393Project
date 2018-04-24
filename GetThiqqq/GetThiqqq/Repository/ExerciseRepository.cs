@@ -14,6 +14,8 @@ namespace GetThiqqq.Repository
         List<string> GetAllExercisesByName();
 
         int GetExerciseIdByName(string exerciseName);
+
+        Exercise GetExerciseById(int id);
     }
 
     public class ExerciseRepository : IExerciseRepository
@@ -43,7 +45,7 @@ namespace GetThiqqq.Repository
                 Instructions = exerciseInstructions,
                 VideoLink = exerciseVideoLink
             };
-
+            sqlConnection.Close();
             return exercise;
         }
 
@@ -108,6 +110,7 @@ namespace GetThiqqq.Repository
             {
                 listOfExercises.Add((string)reader["Name"]);
             }
+            sqlConnection.Close();
             return listOfExercises;
         }
 
@@ -117,7 +120,7 @@ namespace GetThiqqq.Repository
             var cmd = new SqlCommand();
 
             sqlConnection.Open();
-            cmd.CommandText = "Select Id from Exercise Where ExerciseName = '" +
+            cmd.CommandText = "Select Id from Exercise Where Name = '" +
                               exerciseName + "'";
             cmd.Connection = sqlConnection;
             var reader = cmd.ExecuteReader();
@@ -126,6 +129,31 @@ namespace GetThiqqq.Repository
                 return 0;
 
             return (int)reader["Id"];
+        }
+
+        public Exercise GetExerciseById(int id)
+        {
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select * from Exercise Where Id = '" +
+                              id + "'";
+            cmd.Connection = sqlConnection;
+            var reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return new Exercise
+                {
+                    ExerciseName = (string) reader["name"],
+                    Description = (string) reader["Description"],
+                    VideoLink = GetExerciseVideo((string) reader["name"]),
+                    Instructions = (string) reader["Instructions"]
+                };
+            }
+            sqlConnection.Close();
+            return null;
         }
     }
 }
