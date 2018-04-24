@@ -16,7 +16,7 @@ namespace GetThiqqq.Constants
         public const string CalfRaises = "https://www.youtube.com/watch?v=KcjAzSf9QEw";
         public const string FrontSquat = "https://www.youtube.com/watch?v=wyDbagKS7Rg";
         public const string HamstringCurls = "https://www.youtube.com/watch?v=q1cKTmaeQWo";
-        public const string ChestFLyes = "https://www.youtube.com/watch?v=eozdVDA78K0";
+        public const string ChestFlyes = "https://www.youtube.com/watch?v=eozdVDA78K0";
 
         
     }
