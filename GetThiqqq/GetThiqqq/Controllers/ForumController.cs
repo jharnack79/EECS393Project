@@ -17,14 +17,19 @@ namespace GetThiqqq.Controllers
             _forumTopicRepository = forumTopicRepository;
         }
 
-        public IActionResult CreatePost(ViewModelBase viewModelBase)
+        public IActionResult CreatePost()
         {
-            var createPostViewModel = new CreatePostViewModel
+            if (Request.Cookies["userAccountId"] != null)
             {
-                UserId = viewModelBase.UserId
-            };
-            TempData["Id"] = 0;
-            return View(createPostViewModel);
+                var createPostViewModel = new CreatePostViewModel
+                {
+                    UserId = int.Parse(Request.Cookies["userAccountId"])
+                };
+                return View(createPostViewModel);
+            }
+
+            return RedirectToAction("ForumHome");
+
         }
 
         public IActionResult SubmitPost(CreatePostViewModel createPostViewModel)
@@ -47,18 +52,22 @@ namespace GetThiqqq.Controllers
             {
                 UserId = viewModelBase.UserId
             };
+
             
             return View(editPostViewModel);
         }
 
-        public IActionResult CreateTopic(ViewModelBase viewModelBase)
+        public IActionResult CreateTopic()
         {
-            var createTopicViewModel = new CreateTopicViewModel
+            if (Request.Cookies["userAccountId"] != null)
             {
-                UserId = viewModelBase.UserId
-            };
-            TempData["Id"] = 0;
+                var createTopicViewModel = new CreateTopicViewModel
+                {
+                    UserId = int.Parse(Request.Cookies["userAccountId"])
+                };
             return View(createTopicViewModel);
+            }
+          return RedirectToAction("ForumHome");
         }
 
         public IActionResult SubmitTopic(CreateTopicViewModel createTopicViewModel)

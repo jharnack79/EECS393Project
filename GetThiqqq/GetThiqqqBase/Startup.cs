@@ -31,6 +31,7 @@ namespace GetThiqqqBase
             services.AddScoped<IForumPostRepository, ForumPostRepository>();
             services.AddScoped<IForumTopicRepository, ForumTopicRepository>();
             services.AddScoped<ITrackRepository, TrackRepository>();
+            services.AddScoped<IRoutineRepository, RoutineRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
