@@ -12,6 +12,8 @@ namespace GetThiqqq.Repository
         Exercise GetExerciseByName(string exerciseName);
 
         List<string> GetAllExercisesByName();
+
+        int GetExerciseIdByName(string exerciseName);
     }
 
     public class ExerciseRepository : IExerciseRepository
@@ -95,6 +97,23 @@ namespace GetThiqqq.Repository
                 listOfExercises.Add((string)reader["Name"]);
             }
             return listOfExercises;
+        }
+
+        public int GetExerciseIdByName(string exerciseName)
+        {
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select Id from Exercise Where ExerciseName = '" +
+                              exerciseName + "'";
+            cmd.Connection = sqlConnection;
+            var reader = cmd.ExecuteReader();
+
+            if(!reader.Read())
+                return 0;
+
+            return (int)reader["Id"];
         }
     }
 }

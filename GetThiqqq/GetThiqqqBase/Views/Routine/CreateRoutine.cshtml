@@ -6,15 +6,16 @@
 <div>
     <h2>CreateRoutine</h2>
     <br/>
-    <div id="exercise-form">
-        <form method="post" asp-action="CreateRoutine">
+    
+    <form method="post" asp-action="CreateRoutine">
+        <div id="exercise-form">
             <label>Select Your Exercise</label>
             <br/>
-            <input list="exercise-list"type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name"/>
+            <input list="exercise-list"type="text" name="Exercises" data-list-element="exercise-list" id="exercise-name"/>
             <datalist id="exercise-list"></datalist>
             <br/>
-            <label>Number of Reps</label>
-            <select id="number-of-reps">
+            <label id="reps-label">Number of Reps</label>
+            <select id="number-of-reps" name="NumOfReps">
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
@@ -29,13 +30,24 @@
                 <option>14</option>
                 <option>15</option>
             </select>
+            <label id="sets-label">Number of Sets</label>
+            <select id="number-of-sets" name="NumOfSets">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
             <br/>
-            <label>Weight</label>
+            <label id="weight-label">Weight</label>
             <br/>
-            <input name="Weight" type="number"/>
+            <input id="weight" name="ExerciseWeight" type="number"/>
             <br/>
+        </div>
+        <button type="submit">Create your Routine</button>
         </form>
-    </div>
+    
     
     <button id="next-exercise">Add Another Exercise</button>
 </div>
@@ -51,16 +63,50 @@
             function () {
                 var element = document.getElementById("exercise-name");
                 var datalistElement = document.getElementById("exercise-list");
+                var weight = document.getElementById("weight");
+                var numOfReps = document.getElementById("number-of-reps");
+                var numOfSets = document.getElementById("number-of-sets");
+                var weightLabel = document.getElementById("weight-label");
+                var setsLabel = document.getElementById("sets-label");
+                var repsLabel = document.getElementById("reps-label");
                 var newDatalistElement = datalistElement.cloneNode();
                 var newElement = element.cloneNode();
+                var newWeight = weight.cloneNode();
+                var newSets = numOfSets.cloneNode();
+                var newReps = numOfReps.cloneNode();
+                var newSetsLabel = setsLabel.cloneNode();
+                var newRepsLabel = repsLabel.cloneNode();
+                var newWeightLabel = weightLabel.cloneNode();
+                newWeightLabel.append("Weight");
+                newSetsLabel.append("Number Of Sets");
+                newRepsLabel.append("Number Of Reps");
                 var dataListOptions = $("#exercise-list option");
                 $.each(dataListOptions,
                     function(index, exercise) {
                         newDatalistElement.append(exercise.cloneNode());
                     });
-
+                var setOptions = $("#number-of-sets option");
+                $.each(setOptions,
+                    function (index, numSet) {
+                        var newNumSet = numSet.cloneNode();
+                        newNumSet.append(numSet.text);
+                        newSets.append(newNumSet);
+                    });
+                var repOptions = $("#number-of-reps option");
+                $.each(repOptions,
+                    function (index, numRep) {
+                        var newNumRep = numRep.cloneNode();
+                        newNumRep.append(numRep.text);
+                        newReps.append(newNumRep);
+                    });
                 $("#exercise-form").append(newElement);
                 $("#exercise-form").append(newDatalistElement);
+                $("#exercise-form").append(newWeightLabel);
+                $("#exercise-form").append(newWeight);
+                $("#exercise-form").append(newSetsLabel);
+                $("#exercise-form").append(newSets);
+                $("#exercise-form").append(newRepsLabel);
+                $("#exercise-form").append(newReps);
         });
 
     function fillExercises() {

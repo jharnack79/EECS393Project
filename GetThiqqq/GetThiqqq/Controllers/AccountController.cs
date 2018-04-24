@@ -37,13 +37,13 @@ namespace GetThiqqq.Controllers
                 Username = userAccount.Username,
                 Address = ""
             };
+            Response.Cookies.Append("userAccountId", userAccount.Id.ToString());
             return View(userProfileViewModel);
         }
 
 
         public IActionResult CreateAccount()
         {
-            TempData["Id"] = 0;
             return View();
         }
 

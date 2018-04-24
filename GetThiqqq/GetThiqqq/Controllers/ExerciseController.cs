@@ -36,7 +36,7 @@ namespace GetThiqqq.Controllers
                 Exercise = exercise,
                 UserId = 0
             };
-
+            TempData["Id"] = 0;
             return View(exerciseDemonstrationViewModel);
         }
 

@@ -9,6 +9,8 @@ namespace GetThiqqq.Models
     {
         public int Id { get; set; }
 
+        public int UserId { get; set; }
+
         public List<string> Exercises { get; set; }
 
         public List<int> NumOfSets { get; set; }

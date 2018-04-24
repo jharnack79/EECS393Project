@@ -6,8 +6,6 @@
 <h2>CreatePost</h2>
 <form asp-action="@Url.Action("SubmitPost", "Forum")">
     <textarea name="FourmText"></textarea>
-    @Html.HiddenFor(x => x.TopicId);
-    @Html.HiddenFor(x => x.UserId);
     <button type="submit">Post</button>
 </form>
 

@@ -1,5 +1,4 @@
 ﻿@{
-    TempData["Id"] = 0;
 }
 
 <style>
@@ -44,20 +43,12 @@
 <h1 style="text-align: center">Login</h1>
 <div>
     <form action="@Url.Action("UserProfile", "Account")">
-<<<<<<< HEAD
         <h3 class="username">Username</h3>
         <input type="text" name="Username" />
         <h3 class="password">Password</h3>
-        <input type="text" name="UserPassword" />
+        <input type="password" name="UserPassword" />
         <div style="text-align:center; padding:10px">
             <button id="submit" type="submit">Login</button>
         </div>
-=======
-        <h3>Username</h3>
-        <input type="text" name="Username" style="display: block" />
-        <h3>Password</h3>
-        <input type="text" name="UserPassword" style="display: block" />
-        <button type="submit">Login</button>
->>>>>>> 581d6535368472389ddbdc0bcb17a3c4ff4b055b
     </form>
 </div>
