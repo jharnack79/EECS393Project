@@ -46,14 +46,13 @@ namespace GetThiqqq.Controllers
             return RedirectToAction("ForumTopic", forumTopicViewModel);
         }
 
-        public IActionResult EditPost(ViewModelBase viewModelBase)
+        public IActionResult EditPost()
         {
             var editPostViewModel = new CreatePostViewModel
             {
-                UserId = viewModelBase.UserId
+                UserId = int.Parse(Request.Cookies["userAccountId"])
             };
-
-            
+ 
             return View(editPostViewModel);
         }
 
