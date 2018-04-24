@@ -35,7 +35,7 @@ namespace GetThiqqq.Repository
 
             var exerciseInstructions = (string)reader["Instructions"];
             var exerciseDescription = (string)reader["Description"];
-            var exerciseVideoLink = GetExerciseVideo(exerciseName)
+            var exerciseVideoLink = GetExerciseVideo(exerciseName);
             var exercise = new Exercise
             {
                 ExerciseName = exerciseName,
@@ -57,7 +57,7 @@ namespace GetThiqqq.Repository
                     link = ExerciseConstants.BenchPress;
                 case "Squat":
                     link = ExerciseConstants.Squat;
-                case "Deadlift";
+                case "Deadlift":
                     link = ExerciseConstants.Deadlift;
                 case "Front Squat";
                     link = ExerciseConstants.FrontSquat;
@@ -75,7 +75,6 @@ namespace GetThiqqq.Repository
                     link = ExerciseConstants.HamstringCurls;
                 case "Chest Flyes";
                     link = ExerciseConstants.ChestFlyes;
-
             }
             return link;
 
