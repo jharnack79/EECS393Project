@@ -40,16 +40,17 @@ namespace GetThiqqq.Repository
             {
                 ExerciseName = exerciseName,
                 Description = exerciseDescription,
-                Instructions = exerciseInstructions
+                Instructions = exerciseInstructions,
+                VideoLink = exerciseVideoLink
             };
 
             return exercise;
         }
 
-        public string GetExerciseVideo(string exerciseName)
+        private string GetExerciseVideo(string exerciseName)
         {
-            string value = exerciseName;
-            string link = "";
+            var value = exerciseName;
+            var link = "";
 
             switch(value)
             {
