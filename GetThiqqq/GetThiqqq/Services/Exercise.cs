@@ -11,5 +11,7 @@ namespace GetThiqqq.Services
         public string Description { get; set; }
 
         public string Instructions { get; set; }
+
+        public string VideoLink { get; set; }
     }
 }

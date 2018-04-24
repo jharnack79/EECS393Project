@@ -35,21 +35,22 @@ namespace GetThiqqq.Repository
 
             var exerciseInstructions = (string)reader["Instructions"];
             var exerciseDescription = (string)reader["Description"];
-            var exerciseVideoLink = GetExerciseVideo(exerciseName)
+            var exerciseVideoLink = GetExerciseVideo(exerciseName);
             var exercise = new Exercise
             {
                 ExerciseName = exerciseName,
                 Description = exerciseDescription,
-                Instructions = exerciseInstructions
+                Instructions = exerciseInstructions,
+                VideoLink = exerciseVideoLink
             };
 
             return exercise;
         }
 
-        public string GetExerciseVideo(string exerciseName)
+        private string GetExerciseVideo(string exerciseName)
         {
-            string value = exerciseName;
-            string link = "";
+            var value = exerciseName;
+            var link = "";
 
             switch(value)
             {
