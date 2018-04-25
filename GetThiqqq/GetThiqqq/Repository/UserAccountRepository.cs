@@ -45,7 +45,7 @@ namespace GetThiqqq.Repository
                 Password = loginAccountViewModel.Password,
                 EmailAddress = emailAddress
             };
-
+            sqlConnection.Close();
             return user;
         }
         public bool AddNewAccount(CreateAccountViewModel createAccountViewModel)

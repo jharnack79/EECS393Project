@@ -44,9 +44,9 @@
 <div>
     <form action="@Url.Action("UserProfile", "Account")">
         <h3 class="username">Username</h3>
-        <input type="text" name="Username" />
+        <input type="text" name="Username" required/>
         <h3 class="password">Password</h3>
-        <input type="password" name="UserPassword" />
+        <input type="password" name="UserPassword" required/>
         <div style="text-align:center; padding:10px">
             <button id="submit" type="submit">Login</button>
         </div>

@@ -42,25 +42,21 @@ namespace GetThiqqq.Repository
                 var exerciseId = _exerciseRepository.GetExerciseIdByName(createRoutineViewModel.Exercises[i]);
 
                 cmd.CommandText = "Insert Into [GetThiqq].[dbo].[RoutineExercises]" +
-                                  "(RoutineId, ExerciseId, ExerciseWeight, NumOfReps, NumOfSets) " +
+                                  "(RoutineId, ExerciseId, ExerciseWeight, NumOfReps, NumOfSets, UserId) " +
                                   "Values(" + newId + ", " + exerciseId + ", " +
                                   createRoutineViewModel.ExerciseWeight[i] + ", " +
-                                  createRoutineViewModel.NumOfReps[i] + ", " + createRoutineViewModel.NumOfSets[i] +
-                                  ")";
+                                  createRoutineViewModel.NumOfReps[i] + ", " + createRoutineViewModel.NumOfSets[i] + ", " +
+                                  createRoutineViewModel.UserId + ")";
 
-                var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                cmd.ExecuteNonQuery();
+                listOfExercises.Add(new UserExercise
                 {
-                    listOfExercises.Add(new UserExercise
-                    {
-                        ExerciseName = createRoutineViewModel.Exercises[i],
-                        Weight = createRoutineViewModel.ExerciseWeight[i],
-                        Reps = createRoutineViewModel.NumOfReps[i],
-                        Sets = createRoutineViewModel.NumOfSets[i],
-                        UserId = createRoutineViewModel.UserId
-                    });
-                }
-
+                    ExerciseName = createRoutineViewModel.Exercises[i],
+                    Weight = createRoutineViewModel.ExerciseWeight[i],
+                    Reps = createRoutineViewModel.NumOfReps[i],
+                    Sets = createRoutineViewModel.NumOfSets[i],
+                    UserId = createRoutineViewModel.UserId
+                });
             }
 
             var routineCreated = new Routine
@@ -147,6 +143,7 @@ namespace GetThiqqq.Repository
                 });
             }
 
+            sqlConnection.Close();
             currentRoutine.Exercises = new List<UserExercise>(listOfExercises);
             return routines;
         }
