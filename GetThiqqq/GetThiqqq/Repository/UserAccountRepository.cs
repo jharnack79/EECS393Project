@@ -2,6 +2,8 @@
 using GetThiqqq.Services;
 using GetThiqqq.Constants;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Cache;
 
 namespace GetThiqqq.Repository
 {

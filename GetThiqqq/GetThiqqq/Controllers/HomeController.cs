@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using GetThiqqq.Models;
 using Microsoft.AspNetCore.Mvc;
 using GetThiqqqBase.Models;
 
@@ -8,7 +9,14 @@ namespace GetThiqqq.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var userID = 0;
+            if (Request.Cookies["userAccountId"] != null)
+                userID = int.Parse(Request.Cookies["userAccountId"]);
+            var viewModelBase = new ViewModelBase
+            {
+                UserId = userID
+            };
+            return View(viewModelBase);
         }
 
         public IActionResult About()

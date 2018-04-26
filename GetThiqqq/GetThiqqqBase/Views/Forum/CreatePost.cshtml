@@ -2,11 +2,36 @@
 @{
     ViewData["Title"] = "CreatePost";
 }
+<style>
+        button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color: black;
+        color: white;
+        border: thin;
+        border-color: black;
+    }
 
-<h2>CreatePost</h2>
+        textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<div class="page-header">
+
+</div>
+<h2 style="text-align: center">Create Post</h2>
 <form asp-action="SubmitPost">
-    <textarea name="PostText"></textarea>
-    <button type="submit">Post</button>
+    <textarea style="text-align: center" name="PostText"></textarea>
+    <br/>
+    <div style="text-align: center">
+        <button type="submit">Post</button>
+    </div>
     <input type="text" name="TopicId" style="display: none" value="@Model.TopicId" />
     <input type="text" name="TopicId" style="display: none" value="@Model.UserId" />
 </form>

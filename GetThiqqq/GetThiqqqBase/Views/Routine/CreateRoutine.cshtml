@@ -32,7 +32,7 @@
                 <option>5</option>
                 <option>6</option>
             </select>
-            <label>Select Your Exercise</label>
+            <label id="select-label">Select Your Exercise</label>
             <br/>
             <input list="exercise-list"type="text" name="Exercises" data-list-element="exercise-list" id="exercise-name"/>
             <datalist id="exercise-list"></datalist>
@@ -90,6 +90,7 @@
                 var numOfReps = document.getElementById("number-of-reps");
                 var numOfSets = document.getElementById("number-of-sets");
                 var weightLabel = document.getElementById("weight-label");
+                var selectLabel = document.getElementById("select-label");
                 var setsLabel = document.getElementById("sets-label");
                 var repsLabel = document.getElementById("reps-label");
                 var newDatalistElement = datalistElement.cloneNode();
@@ -100,6 +101,7 @@
                 var newSetsLabel = setsLabel.cloneNode();
                 var newRepsLabel = repsLabel.cloneNode();
                 var newWeightLabel = weightLabel.cloneNode();
+                var newSelectLabel = selectLabel.cloneNode();
                 newWeightLabel.append("Weight");
                 newSetsLabel.append("Number Of Sets");
                 newRepsLabel.append("Number Of Reps");
@@ -122,6 +124,7 @@
                         newNumRep.append(numRep.text);
                         newReps.append(newNumRep);
                     });
+                $("#exercise-form").append(newSelectLabel);
                 $("#exercise-form").append(newElement);
                 $("#exercise-form").append(newDatalistElement);
                 $("#exercise-form").append(newWeightLabel);
