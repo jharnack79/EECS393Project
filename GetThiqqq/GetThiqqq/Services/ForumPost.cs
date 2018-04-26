@@ -12,6 +12,11 @@ namespace GetThiqqq.Services
 
         public int UserId { get; set; }
 
+        public UserAccount UserAccount
+        {
+            get; set;
+        }
+
         public string PostText { get; set; }
 
         public List<Tag> Tags { get; set; }

@@ -7,6 +7,21 @@
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+    button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color: black;
+        color: white;
+        border: thin;
+        border-color: black;
+        width:125px
+    }
+
     th, td {
     padding: 15px;
     text-align: left;
@@ -16,20 +31,23 @@
 
 </div>
 <div>
-    <a href="@Url.Action("CreatePost", "Forum")">Reply</a>
+    <h2>@Model.ForumTopic.TopicTitle</h2>
+    <form asp-action="CreatePost">
+        <button>Reply</button>
+    </form>
+    <br/>
     <table style="width: 100%;">
         <tr>
             <th>Username</th>
-            <th>@Model.ForumTopic.TopicTitle</th>
         </tr>
         <tr>
-            <td>@Model.UserAccount.Username</td>
+            <td style ="width: 20%">@Model.UserAccount.Username</td>
             <td>@Model.ForumTopic.TopicText</td>
         </tr>
         @foreach (var post in Model.ForumTopic.TopicPosts)
         {
             <tr>
-                <td>@post.UserId</td>
+                <td>@post.UserAccount.Username</td>
                 <td>@post.PostText</td>
             </tr>
         }

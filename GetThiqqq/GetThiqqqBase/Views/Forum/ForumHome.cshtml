@@ -3,12 +3,29 @@
     ViewData["Title"] = "ForumHome";
 }
 
+<style>
+        button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
+        background-color: black;
+        color: white;
+        border: thin;
+        border-color: black;
+    }
+
+</style>
 <div class="page-header">
 
 </div>
 <h2>ForumHome</h2>
 
-<a href="@Url.Action("CreateTopic", "Forum")"> Create Topic</a>
+<form asp-action="CreateTopic">
+    <button href="@Url.Action("CreateTopic", "Forum")"> Create Topic</button>
+</form>
 <table>
 @foreach (var topic in Model.Topics)
 {

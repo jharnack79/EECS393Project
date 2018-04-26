@@ -2,8 +2,16 @@
 
 <style>
         button {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        height: auto;
+        width: auto;
+        margin: auto;
         background-color: black;
-        color: white
+        color: white;
+        border: thin;
+        border-color: black;
     }
 </style>
 <h2>UserProfile</h2>
@@ -12,13 +20,23 @@
 @Html.HiddenFor(x => x.UserId)
 
 <h5>Email Address: @Model.UserEmail</h5>
+<form asp-action="ExerciseSearch" asp-controller="Exercise">
+    <button type="submit">Search for an Exercise</button>
+</form>
+<br/>
+<form asp-action="CreateRoutine" asp-controller="Routine">
+    <button type="submit">Create a new Routine!</button>
+</form>
+<br/>
+<form asp-action="ViewAllRoutines" asp-controller="Routine">
+    <button type="submit">View My Routines</button>
+</form>
+<br/>
+<form asp-action="ForumHome" asp-controller="Forum">
+    <button type="submit">Forum Home</button>
+</form>
 
-<a href="@Url.Action("ExerciseSearch", "Exercise")">Search for an Exercise!</a>
-<a href="@Url.Action("CreateTopic", "Forum")">Create a new Topic Post!</a>
-<a href="@Url.Action("CreateRoutine", "Routine")">Create a new Routine!</a>
-<a href="@Url.Action("ViewAllRoutines", "Routine")">View My Routines</a>
-<a href="@Url.Action("ForumTopic", "Forum")">Test a Topic</a>
-<a href="@Url.Action("ForumHome", "Forum")">Forum Home</a>
+<br/>
 <form asp-action="Logout">
     <button type="submit">Logout</button>
 </form>

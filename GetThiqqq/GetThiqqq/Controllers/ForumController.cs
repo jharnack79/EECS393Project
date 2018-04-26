@@ -23,7 +23,9 @@ namespace GetThiqqq.Controllers
             {
                 var createPostViewModel = new CreatePostViewModel
                 {
-                    UserId = int.Parse(Request.Cookies["userAccountId"])
+                    UserId = int.Parse(Request.Cookies["userAccountId"]),
+                    TopicId = 28
+
                 };
                 return View(createPostViewModel);
             }
@@ -34,8 +36,9 @@ namespace GetThiqqq.Controllers
 
         public IActionResult SubmitPost(CreatePostViewModel createPostViewModel)
         {
+            createPostViewModel.UserId = int.Parse(Request.Cookies["userAccountId"]);
             var newPost = _forumPostRepository.CreateForumPost(createPostViewModel);
-            var userAccount = _userAccountRepository.GetUserById(createPostViewModel.UserId);
+            var userAccount = _userAccountRepository.GetUserById(int.Parse(Request.Cookies["userAccountId"]));
             var forumTopic = _forumTopicRepository.GetForumTopicById(createPostViewModel.TopicId);
             var forumTopicViewModel = new ForumTopicViewModel
             {
@@ -102,7 +105,7 @@ namespace GetThiqqq.Controllers
         public IActionResult ForumTopic(ForumTopicViewModel forumTopicViewModel)
         {
             var userAccount = _userAccountRepository.GetUserById(int.Parse(Request.Cookies["userAccountId"]));
-            var fourmTopic = _forumTopicRepository.GetForumTopicById(1);
+            var fourmTopic = _forumTopicRepository.GetForumTopicById(28);
             forumTopicViewModel.UserAccount = userAccount;
             forumTopicViewModel.ForumTopic = fourmTopic;
             return View(forumTopicViewModel);

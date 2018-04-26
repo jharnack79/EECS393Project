@@ -4,9 +4,11 @@
 }
 
 <h2>CreatePost</h2>
-<form asp-action="@Url.Action("SubmitPost", "Forum")">
-    <textarea name="FourmText"></textarea>
+<form asp-action="SubmitPost">
+    <textarea name="PostText"></textarea>
     <button type="submit">Post</button>
+    <input type="text" name="TopicId" style="display: none" value="@Model.TopicId" />
+    <input type="text" name="TopicId" style="display: none" value="@Model.UserId" />
 </form>
 
 
