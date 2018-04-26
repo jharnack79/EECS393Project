@@ -1,8 +1,21 @@
-﻿
+﻿@model ForumHomeViewModel
 @{
     ViewData["Title"] = "ForumHome";
 }
 
+<div class="page-header">
+
+</div>
 <h2>ForumHome</h2>
 
 <a href="@Url.Action("CreateTopic", "Forum")"> Create Topic</a>
+<table>
+@foreach (var topic in Model.Topics)
+{
+    <tr>
+        <td>
+        <a type="submit" href="@Url.Action("ViewTopic", topic.TopicId)">@topic.TopicTitle</a>
+        </td>
+    </tr>
+}
+</table>

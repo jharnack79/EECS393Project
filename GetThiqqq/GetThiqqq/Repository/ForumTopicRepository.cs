@@ -10,6 +10,8 @@ namespace GetThiqqq.Repository
 {
     public interface IForumTopicRepository
     {
+        List<ForumTopic> GetAllForumTopics();
+
         ForumTopic GetForumTopicById(int id);
 
         ForumTopic CreateNewForumTopic(CreateTopicViewModel createTopicViewModel);
@@ -21,6 +23,33 @@ namespace GetThiqqq.Repository
         public ForumTopicRepository(IForumPostRepository forumPostRepository)
         {
             _forumPostRepository = forumPostRepository;
+        }
+
+        public List<ForumTopic> GetAllForumTopics()
+        {
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select * from ForumTopic";
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var listOfTopics = new List<ForumTopic>();
+            while (reader.Read())
+            {
+                listOfTopics.Add(new ForumTopic
+                {
+                    TopicId = (int)reader["ID"],
+                    UserId = (int)reader["UserId"],
+                    TopicText = (string)reader["TopicText"],
+                    TopicTitle = (string)reader["TopicTitle"],
+                    TopicPosts = _forumPostRepository.GetForumPostByTopicId((int)reader["ID"])
+                });
+            }
+
+            return listOfTopics;
+
         }
 
         public ForumTopic CreateNewForumTopic(CreateTopicViewModel createTopicViewModel)

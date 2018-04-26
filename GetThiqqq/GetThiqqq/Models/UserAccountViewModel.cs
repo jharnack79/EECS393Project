@@ -5,7 +5,6 @@ namespace GetThiqqq.Models
 {
     public class UserAccountViewModel : ViewModelBase
     {
-
         public string Username { get; set; }
 
         public string UserPassword { get; set; }

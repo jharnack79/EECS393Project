@@ -87,7 +87,16 @@ namespace GetThiqqq.Controllers
 
         public IActionResult ForumHome()
         { 
-            return View();
+            var forumHomeViewModel = new ForumHomeViewModel
+            {
+                Topics = _forumTopicRepository.GetAllForumTopics()
+            };
+            return View(forumHomeViewModel);
+        }
+
+        public IActionResult ViewTopic(int id)
+        {
+            return RedirectToAction("ForumTopic", null);
         }
 
         public IActionResult ForumTopic(ForumTopicViewModel forumTopicViewModel)
