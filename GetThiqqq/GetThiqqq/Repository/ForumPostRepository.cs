@@ -13,6 +13,8 @@ namespace GetThiqqq.Repository
         ForumPost CreateForumPost(CreatePostViewModel createPostViewModel);
 
         List<ForumPost> GetForumPostByTopicId(int id);
+
+        List<ForumPost> GetForumPostsByUserId(int id);
     }
 
     public class ForumPostRepository : IForumPostRepository
@@ -53,6 +55,31 @@ namespace GetThiqqq.Repository
 
             sqlConnection.Open();
             cmd.CommandText = "Select * from ForumPosts Where TopicId = " + id;
+            cmd.Connection = sqlConnection;
+
+            var reader = cmd.ExecuteReader();
+            var listOfPosts = new List<ForumPost>();
+
+            while (reader.Read())
+            {
+                listOfPosts.Add(new ForumPost
+                {
+                    Id = (int)reader["Id"],
+                    TopicId = (int)reader["TopicId"],
+                    UserId = (int)reader["UserId"],
+                    PostText = (string)reader["PostText"]
+                });
+            }
+            return listOfPosts;
+        }
+
+        public List<ForumPost> GetForumPostsByUserId(int id)
+        {
+            var sqlConnection = new SqlConnection(DatabaseConstants.ConnectionString);
+            var cmd = new SqlCommand();
+
+            sqlConnection.Open();
+            cmd.CommandText = "Select * from ForumPosts Where UserId = " + id;
             cmd.Connection = sqlConnection;
 
             var reader = cmd.ExecuteReader();

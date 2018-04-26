@@ -1,4 +1,5 @@
-﻿using GetThiqqq.Services;
+﻿using System.Collections.Generic;
+using GetThiqqq.Services;
 
 namespace GetThiqqq.Models
 {
@@ -12,6 +13,8 @@ namespace GetThiqqq.Models
         public string UserEmail { get; set; }
 
         public string Address { get; set; }
+
+        public List<ForumPost> UserPosts { get; set; }
 
     }
 }

@@ -1,6 +1,11 @@
 ﻿@model GetThiqqq.Models.UserAccountViewModel
 
-
+<style>
+        button {
+        background-color: black;
+        color: white
+    }
+</style>
 <h2>UserProfile</h2>
 
 <h3>Hello, @Model.Username!</h3>
@@ -13,5 +18,20 @@
 <a href="@Url.Action("CreateRoutine", "Routine")">Create a new Routine!</a>
 <a href="@Url.Action("ViewAllRoutines", "Routine")">View My Routines</a>
 <a href="@Url.Action("ForumTopic", "Forum")">Test a Topic</a>
+<form asp-action="Logout">
+    <button type="submit">Logout</button>
+</form>
 <h4>Your Fourm Posts</h4>
-
+<table style="width: 40%;">
+    <tr>
+        <th style="width: 20%">Date of Post</th>
+        <th>Post Text</th>
+    </tr>
+    @foreach (var post in Model.UserPosts)
+    {
+        <tr>
+            <td style="width: 10%">4/21/2018</td>
+            <td>@post.PostText</td>
+        </tr>
+    }
+</table>

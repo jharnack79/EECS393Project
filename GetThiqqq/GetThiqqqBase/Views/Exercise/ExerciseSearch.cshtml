@@ -3,17 +3,25 @@
     ViewData["Title"] = "ExerciseSearch";
     TempData["Id"] = Model.UserId;
 }
+<style>
+        button {
+        background-color: black;
+        color: white
+    }
+</style>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <div class="page-header">
 
 </div>
 <h2 style="text-align:center; padding:10px">ExerciseSearch</h2>
 <form action="@Url.Action("ExerciseDemonstration", "Exercise")">
-
-    <input list="exercise-list" type="text" name="ExerciseName" data-list-element="exercise-list" id="exercise-name" style="display:block; position:relative; margin:auto" />
+    
+    <p id="exercise-validation" class="invalid" style="display: none; color: red; text-align: center">That exercise does not exist in our records</p>
+    <input list="exercise-list" type="text" id="exercise-input" name="ExerciseName" data-list-element="exercise-list" id="exercise-name" style="display:block; position:relative; margin:auto" />
     <datalist id="exercise-list"></datalist>
     <div style="text-align:center">
-        <button style="display:inline-block" type="submit">Search!</button>
+        <button style="display: inline-block; padding: 10px" type="submit">Search!</button>
     </div>
 </form>
 
@@ -41,4 +49,32 @@
 
         });
     }
+
+        $("#exercise-input").on("blur", function () {
+        var dataListElement = document.getElementById(this.dataset.listElement);
+            verifyDropdownEntry(dataListElement, this.value);
+        });
+
+    function verifyDropdownEntry(dropdownList, newEntry) {
+        var valueFound = false;
+        $("#form-confirmation").hide();
+        $.each(dropdownList.options, function (index, listElement) {
+            if (listElement.value === newEntry || newEntry === "") {
+                $(".invalid").hide();
+                valueFound = true;
+            }
+        });
+        if (valueFound === false) {
+           $(".invalid").show();
+        }
+
+
+        }
+
+    $("form").submit(function (e) {
+            if ($(".invalid").is(":visible")) {
+                e.preventDefault();
+            }
+        });
+
 </script>
