@@ -11,6 +11,8 @@ namespace GetThiqqq.Models
         public ForumTopic ForumTopic { get; set; }
 
         public UserAccount UserAccount { get; set; }
+
+        public int TopicId { get; set; }
         
     }
 }

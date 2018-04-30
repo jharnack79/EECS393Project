@@ -33,6 +33,7 @@
 <div>
     <h2>@Model.ForumTopic.TopicTitle</h2>
     <form asp-action="CreatePost">
+        <input style="display: none" name="id" value="@Model.TopicId"/>
         <button>Reply</button>
     </form>
     <br/>

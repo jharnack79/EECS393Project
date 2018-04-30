@@ -31,7 +31,7 @@
 {
     <tr>
         <td>
-        <a type="submit" href="@Url.Action("ViewTopic", topic.TopicId)">@topic.TopicTitle</a>
+        <a type="submit" href="@Url.Action("ViewTopic", new {id=topic.TopicId})">@topic.TopicTitle</a>
         </td>
     </tr>
 }

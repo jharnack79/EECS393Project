@@ -17,14 +17,14 @@ namespace GetThiqqq.Controllers
             _forumTopicRepository = forumTopicRepository;
         }
 
-        public IActionResult CreatePost()
+        public IActionResult CreatePost(int id)
         {
             if (Request.Cookies["userAccountId"] != null)
             {
                 var createPostViewModel = new CreatePostViewModel
                 {
                     UserId = int.Parse(Request.Cookies["userAccountId"]),
-                    TopicId = 28
+                    TopicId = id
 
                 };
                 return View(createPostViewModel);
@@ -43,7 +43,8 @@ namespace GetThiqqq.Controllers
             var forumTopicViewModel = new ForumTopicViewModel
             {
                 UserAccount = userAccount,
-                ForumTopic = forumTopic
+                ForumTopic = forumTopic,
+                TopicId = createPostViewModel.TopicId
             };
 
             return RedirectToAction("ForumTopic", forumTopicViewModel);
@@ -82,7 +83,7 @@ namespace GetThiqqq.Controllers
             var forumTopicViewModel = new ForumTopicViewModel
             {
                 ForumTopic = newTopic,
-                UserAccount = userAccount
+                UserAccount = userAccount,
             };
 
             return RedirectToAction("ForumTopic", forumTopicViewModel);
@@ -99,13 +100,17 @@ namespace GetThiqqq.Controllers
 
         public IActionResult ViewTopic(int id)
         {
-            return RedirectToAction("ForumTopic", null);
+            var viewModel = new ForumTopicViewModel
+            {
+                TopicId = id
+            };
+            return RedirectToAction("ForumTopic", viewModel);
         }
 
         public IActionResult ForumTopic(ForumTopicViewModel forumTopicViewModel)
         {
             var userAccount = _userAccountRepository.GetUserById(int.Parse(Request.Cookies["userAccountId"]));
-            var fourmTopic = _forumTopicRepository.GetForumTopicById(28);
+            var fourmTopic = _forumTopicRepository.GetForumTopicById(forumTopicViewModel.TopicId);
             forumTopicViewModel.UserAccount = userAccount;
             forumTopicViewModel.ForumTopic = fourmTopic;
             return View(forumTopicViewModel);

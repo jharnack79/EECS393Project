@@ -42,7 +42,7 @@ namespace GetThiqqq.Repository
 
             var user = new UserAccount
             {
-                Id = userID,
+                Id = userID,//hijlkhiguyghk
                 Username = loginAccountViewModel.Username,
                 Password = loginAccountViewModel.Password,
                 EmailAddress = emailAddress
