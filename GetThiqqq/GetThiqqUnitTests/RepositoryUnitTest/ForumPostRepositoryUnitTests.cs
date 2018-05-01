@@ -11,14 +11,14 @@ namespace GetThiqqUnitTests.RepositoryUnitTest
     [TestFixture]
     public class ForumPostRepositoryUnitTests
     {
-        private readonly ForumPostRepository _repository = new ForumPostRepository();
+        private static readonly  UserAccountRepository _userAccountRepository;
+        private readonly ForumPostRepository _repository = new ForumPostRepository(_userAccountRepository);
 
         [Test]
         public void Should_get_posts_for_topic()
         {
-            var forumPosts = _repository.GetForumPostByTopicId(1);
-            var forumPost = forumPosts.First();
-            Assert.AreEqual("Test", forumPost.PostText);
+            var forumPosts = _repository.GetForumPostByTopicId(27);
+            Assert.NotNull(forumPosts);
 
         }
 

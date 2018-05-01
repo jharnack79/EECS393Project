@@ -18,9 +18,9 @@ namespace GetThiqqq.Repository
     }
     public class ForumTopicRepository : IForumTopicRepository
     {
-        private readonly IForumPostRepository _forumPostRepository;
+        private readonly ForumPostRepository _forumPostRepository;
 
-        public ForumTopicRepository(IForumPostRepository forumPostRepository)
+        public ForumTopicRepository(ForumPostRepository forumPostRepository)
         {
             _forumPostRepository = forumPostRepository;
         }
@@ -40,11 +40,11 @@ namespace GetThiqqq.Repository
             {
                 listOfTopics.Add(new ForumTopic
                 {
-                    TopicId = (int)reader["ID"],
+                    TopicId = (int)reader["Id"],
                     UserId = (int)reader["UserId"],
                     TopicText = (string)reader["TopicText"],
                     TopicTitle = (string)reader["TopicTitle"],
-                    TopicPosts = _forumPostRepository.GetForumPostByTopicId((int)reader["ID"])
+                    TopicPosts = _forumPostRepository.GetForumPostByTopicId((int)reader["Id"])
                 });
             }
 

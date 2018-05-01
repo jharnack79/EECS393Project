@@ -19,9 +19,9 @@ namespace GetThiqqq.Repository
     }
     public class RoutineRepository : IRoutineRepository
     {
-        private readonly IExerciseRepository _exerciseRepository;
+        private readonly ExerciseRepository _exerciseRepository;
 
-        public RoutineRepository(IExerciseRepository exerciseRepository)
+        public RoutineRepository(ExerciseRepository exerciseRepository)
         {
             _exerciseRepository = exerciseRepository;
         }

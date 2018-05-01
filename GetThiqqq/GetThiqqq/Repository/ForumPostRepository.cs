@@ -19,9 +19,9 @@ namespace GetThiqqq.Repository
 
     public class ForumPostRepository : IForumPostRepository
     {
-        private readonly IUserAccountRepository _userAccountRepository;
+        private readonly UserAccountRepository _userAccountRepository;
 
-        public ForumPostRepository(IUserAccountRepository userAccountRepository)
+        public ForumPostRepository(UserAccountRepository userAccountRepository)
         {
             _userAccountRepository = userAccountRepository;
         }
@@ -68,14 +68,15 @@ namespace GetThiqqq.Repository
 
             while (reader.Read())
             {
-                listOfPosts.Add(new ForumPost
+                var post = new ForumPost
                 {
-                    Id = (int)reader["Id"],
-                    TopicId = (int)reader["TopicId"],
-                    UserId = (int)reader["UserId"],
-                    PostText = (string)reader["PostText"],
-                    UserAccount = _userAccountRepository.GetUserById((int)reader["UserId"])
-                });
+                    Id = (int) reader["Id"],
+                    TopicId = (int) reader["TopicId"],
+                    UserId = (int) reader["UserId"],
+                    PostText = (string) reader["PostText"],
+                    UserAccount = _userAccountRepository.GetUserById((int) reader["UserId"])
+                };
+                listOfPosts.Add(post);
             }
             return listOfPosts;
         }

@@ -127,6 +127,7 @@ namespace GetThiqqq.Repository
             if(!reader.Read())
                 return 0;
 
+            
             return (int)reader["Id"];
         }
 

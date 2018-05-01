@@ -11,15 +11,15 @@ namespace GetThiqqUnitTests.RepositoryUnitTest
     [TestFixture]
     public class ForumTopicRepositoryUnitTests
     {
-        private static readonly ForumPostRepository _postRepository = new ForumPostRepository();
+        private static readonly UserAccountRepository _userAccountRepository = new UserAccountRepository();
+        private static readonly ForumPostRepository _postRepository = new ForumPostRepository(_userAccountRepository);
         private readonly ForumTopicRepository _topicRepository = new ForumTopicRepository(_postRepository);
 
         [Test]
         public void Should_get_topic_by_Id()
         {
-            var forumTopic = _topicRepository.GetForumTopicById(1);
-            Assert.AreEqual("Test", forumTopic.TopicTitle);
-            Assert.AreEqual("Test", forumTopic.TopicText);
+            var forumTopic = _topicRepository.GetForumTopicById(27);
+            Assert.NotNull(forumTopic);
         }
 
         [Test]
@@ -42,5 +42,13 @@ namespace GetThiqqUnitTests.RepositoryUnitTest
             Assert.AreEqual("UnitTest", forumTopic.TopicTitle);
             Assert.AreEqual("UnitTest", forumTopic.TopicText);
         }
+
+        [Test]
+        public void Should_get_all_topics()
+        {
+            Assert.NotNull(_topicRepository.GetAllForumTopics());
+        }
+
+
     }
 }

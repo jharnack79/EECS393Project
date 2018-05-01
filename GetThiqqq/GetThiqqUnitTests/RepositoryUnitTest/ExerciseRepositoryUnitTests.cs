@@ -34,5 +34,12 @@ namespace GetThiqqUnitTests.RepositoryUnitTest
             var exercise = exerciseRepository.GetExerciseByName("Not an Exercise");
             Assert.IsNull(exercise);
         }
+
+        [Test]
+        public void Should_get_exercise_id_by_name()
+        {
+            var exerciseRepository = new ExerciseRepository();
+            Assert.AreEqual(1, exerciseRepository.GetExerciseIdByName("Bench Press"));
+        }
     }
 }
