@@ -84,6 +84,7 @@ namespace GetThiqqq.Controllers
             {
                 ForumTopic = newTopic,
                 UserAccount = userAccount,
+                TopicId = newTopic.TopicId
             };
 
             return RedirectToAction("ForumTopic", forumTopicViewModel);
