@@ -29,6 +29,8 @@ namespace GetThiqqqBase
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
             services.AddScoped(typeof(UserAccountRepository));
             services.AddScoped(typeof(ForumPostRepository));
+            services.AddScoped(typeof(RoutineRepository));
+            services.AddScoped(typeof(ExerciseRepository));
             services.AddScoped<IUserAccountRepository, UserAccountRepository>();
             services.AddScoped<IForumPostRepository, ForumPostRepository>();
             services.AddScoped<IForumTopicRepository, ForumTopicRepository>();

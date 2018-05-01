@@ -41,6 +41,8 @@ namespace GetThiqqq.Controllers
                 Username = userAccountViewModel.Username
             };
             var userAccount = loginAccountViewModel.UserId == 0 ? _userAccountRepository.LoginAccount(loginAccountViewModel) : _userAccountRepository.GetUserById(int.Parse(Request.Cookies["userAccountId"]));
+            if (userAccount == null)
+                return RedirectToAction("Login");
             var userProfileViewModel = new UserAccountViewModel
             {
                 UserId = userAccount.Id,
